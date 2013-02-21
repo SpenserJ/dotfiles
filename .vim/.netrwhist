@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/spenserj/Topia/ClientSource/Scripts/Game'
+let g:netrw_dirhist_2='/jail/var/www/thejournal.spenserjones.com/public_html'
+let g:netrw_dirhist_3='/jail/var/www/thejournal.spenserjones.com'
+let g:netrw_dirhist_4='/jail/var/www/thejournal.spenserjones.com/public_html'
+let g:netrw_dirhist_5='/jail/var/www/thejournal.spenserjones.com/public_html/less'
+let g:netrw_dirhist_6='/jail/var/www/thejournal.spenserjones.com'
+let g:netrw_dirhist_7='/home/spenserj/.vim'
+let g:netrw_dirhist_8='/var/www/malevolentjalapeno.com/public_html/dev/0ffWhiteChat/src/ui'

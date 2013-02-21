@@ -1,0 +1,10 @@
+[user]
+	email = spenser.e.jones@gmail.com
+	name = Spenser Jones
+[core]
+	editor = vim
+[color]
+	ui = auto
+	interactive = auto
+[diff]
+	renames = copies
