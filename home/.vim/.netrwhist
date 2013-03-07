@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/spenserj/.tmuxifier'
+let g:netrw_dirhist_2='/home/spenserj/Ciana/public/layouts'
+let g:netrw_dirhist_3='/home/spenserj/Ciana/public/layouts/default'

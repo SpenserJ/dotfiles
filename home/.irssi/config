@@ -271,3 +271,9 @@ settings = {
   "fe-text" = { actlist_sort = "refnum"; };
   "perl/core/scripts" = { nicklist_height = "46"; nicklist_width = "20"; };
 };
+hilights = (
+  { text = "Malevolent"; nick = "yes"; word = "yes"; },
+  { text = "Malev"; nick = "yes"; word = "yes"; },
+  { text = "Jalapeno"; nick = "yes"; word = "yes"; },
+  { text = "Mal"; nick = "yes"; word = "yes"; }
+);

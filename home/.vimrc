@@ -1,3 +1,6 @@
+" Enable pathogen
+execute pathogen#infect()
+
 " Indentation
 ":set autoindent   " Match level
 ":set cindent      " Indent braces
@@ -9,9 +12,6 @@
 ":set linebreak
 ":set textwidth=80
 ":set wrapmargin=0
-
-" pathogen
-"call pathogen#infect()
 
 " syntastic
 "let g:syntastic_enable_signs=1
@@ -26,3 +26,9 @@
 
 " Search should highlight as you type
 :set incsearch
+
+" Enable Solarized
+syntax enable
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
