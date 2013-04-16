@@ -1,3 +1,9 @@
 [submodule "home/.zprezto"]
 	path = home/.zprezto
 	url = git@github.com:sorin-ionescu/prezto.git
+[submodule "apps/tmuxifier"]
+	path = apps/tmuxifier
+	url = git@github.com:jimeh/tmuxifier.git
+[submodule "home/.vim/bundle/vim-colors-solarized"]
+	path = home/.vim/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
