@@ -26,3 +26,13 @@
 
 " Search should highlight as you type
 :set incsearch
+
+" Don't move around the document with arrow keys!
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+nnoremap  <Up>     <NOP>
+nnoremap  <Down>   <NOP>
+nnoremap  <Left>   <NOP>
+nnoremap  <Right>  <NOP>
