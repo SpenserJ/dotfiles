@@ -2,10 +2,15 @@
 execute pathogen#infect()
 
 " Indentation
-":set autoindent   " Match level
-":set cindent      " Indent braces
-:set shiftwidth=2 " Indent size
-:set expandtab    " Spaces instead of tabs
+:set autoindent   " Match level
+:set cindent      " Indent braces
+:set tabstop=2 softtabstop=2 shiftwidth=2 expandtab " Indent size
+
+" Indent Guides
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_enable_on_vim_startup = 1
+
 
 " Word Wrap
 ":set wrap
@@ -41,3 +46,7 @@ nnoremap  <Right>  <NOP>
 syntax enable
 let g:solarized_termtrans = 1
 colorscheme solarized
+set background=light
+
+" NERDTree
+map <F2> :NERDTreeToggle<CR>
