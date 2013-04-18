@@ -19,3 +19,6 @@
 [submodule "home/.vim/bundle/auto-pairs"]
 	path = home/.vim/bundle/auto-pairs
 	url = git://github.com/jiangmiao/auto-pairs.git
+[submodule "home/.vim/bundle/nerdcommenter"]
+	path = home/.vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
