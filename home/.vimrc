@@ -22,8 +22,12 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1
 
+" \l for lines, \L for relative lines, \o to toggle paste-mode
+" Default to relative lines being visible
 :nmap \l :setlocal number!<CR>
+:nmap \L :setlocal relativenumber!<CR>
 :nmap \o :set paste!<CR>
+set relativenumber
 
 " Make j and k move a visual line instead of full line
 :nmap j gj
