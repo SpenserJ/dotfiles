@@ -25,7 +25,7 @@ let g:syntastic_check_on_open=1
 :nmap \l :setlocal number!<CR>
 :nmap \o :set paste!<CR>
 
-" Make j and k move a visual line instead of ful lline
+" Make j and k move a visual line instead of full line
 :nmap j gj
 :nmap k gk
 
