@@ -33,6 +33,8 @@
   set colorcolumn=81 " Draw a line at column 85
   syntax enable " Syntax highlighting
   set scrolloff=3 " Scroll to retain lines above/below the current line
+  set splitbelow " New splits should open below the current
+  set splitright " New splits should open to the right of the current
 
 " Key (re)mapping
   " Leaders
@@ -92,3 +94,17 @@
     let g:syntastic_check_on_open=1
 
   let NERDSpaceDelims=1
+
+" Language Overrides
+  " Drupal
+    if has("autocmd")
+      " Drupal *.module and *.install files.
+      augroup module
+        autocmd BufRead,BufNewFile *.module  set filetype=php
+        autocmd BufRead,BufNewFile *.install set filetype=php
+        autocmd BufRead,BufNewFile *.test    set filetype=php
+        autocmd BufRead,BufNewFile *.inc     set filetype=php
+        autocmd BufRead,BufNewFile *.profile set filetype=php
+        autocmd BufRead,BufNewFile *.view    set filetype=php
+      augroup END
+    endif
