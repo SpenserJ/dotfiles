@@ -1,12 +1,12 @@
 [submodule "home/.zprezto"]
 	path = home/.zprezto
-	url = git@github.com:sorin-ionescu/prezto.git
+	url = https://github.com/sorin-ionescu/prezto.git
 [submodule "apps/tmuxifier"]
 	path = apps/tmuxifier
-	url = git@github.com:jimeh/tmuxifier.git
+	url = https://github.com/jimeh/tmuxifier.git
 [submodule "home/.vim/bundle/vim-colors-solarized"]
 	path = home/.vim/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
+	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "home/.vim/bundle/syntastic"]
 	path = home/.vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
@@ -15,10 +15,10 @@
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "home/.vim/bundle/vim-indent-guides"]
 	path = home/.vim/bundle/vim-indent-guides
-	url = git://github.com/nathanaelkane/vim-indent-guides.git
+	url = https://github.com/nathanaelkane/vim-indent-guides.git
 [submodule "home/.vim/bundle/auto-pairs"]
 	path = home/.vim/bundle/auto-pairs
-	url = git://github.com/jiangmiao/auto-pairs.git
+	url = https://github.com/jiangmiao/auto-pairs.git
 [submodule "home/.vim/bundle/nerdcommenter"]
 	path = home/.vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
