@@ -96,15 +96,17 @@
   let NERDSpaceDelims=1
 
 " Language Overrides
-  " Drupal
-    if has("autocmd")
-      " Drupal *.module and *.install files.
-      augroup module
-        autocmd BufRead,BufNewFile *.module  set filetype=php
-        autocmd BufRead,BufNewFile *.install set filetype=php
-        autocmd BufRead,BufNewFile *.test    set filetype=php
-        autocmd BufRead,BufNewFile *.inc     set filetype=php
-        autocmd BufRead,BufNewFile *.profile set filetype=php
-        autocmd BufRead,BufNewFile *.view    set filetype=php
-      augroup END
-    endif
+  if has("autocmd")
+    " Drupal *.module and *.install files.
+    augroup module
+      autocmd BufRead,BufNewFile *.module  set filetype=php
+      autocmd BufRead,BufNewFile *.install set filetype=php
+      autocmd BufRead,BufNewFile *.test    set filetype=php
+      autocmd BufRead,BufNewFile *.inc     set filetype=php
+      autocmd BufRead,BufNewFile *.profile set filetype=php
+      autocmd BufRead,BufNewFile *.view    set filetype=php
+    augroup END
+    " Bind/NSD3 *.zone
+    autocmd BufRead,BufNewFile *.zone set filetype=bindzone
+    autocmd FileType bindzone setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
+  endif
