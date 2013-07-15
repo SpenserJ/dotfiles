@@ -23,6 +23,8 @@
     " Fix ttimeoutlen for exiting insert mode with Airline
     set ttimeoutlen=50
 
+    let g:airline_powerline_fonts=0
+
   " Indent Guides
     let g:indent_guides_guide_size = 1
     let g:indent_guides_start_level = 2
