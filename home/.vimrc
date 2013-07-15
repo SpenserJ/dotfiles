@@ -18,7 +18,10 @@
   " Colour Scheme
     colorscheme solarized
     set background=light
-    let g:solarized_termtrans = 1
+    set t_Co=256
+    let g:airline_theme='solarized'
+    " Fix ttimeoutlen for exiting insert mode with Airline
+    set ttimeoutlen=50
 
   " Indent Guides
     let g:indent_guides_guide_size = 1
