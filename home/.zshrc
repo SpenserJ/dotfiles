@@ -14,7 +14,7 @@ fi
 [[ -s "$HOME/.rvm/scripts/rvm"  ]] && . "$HOME/.rvm/scripts/rvm"
 
 # Alias homesick/homeshick and set up folders
-alias homesick="~/.homeshick"
+alias homesick="~/.homesick/repos/homeshick/home/.homeshick"
 export DOTFILES="$HOME/.homesick/repos/dotfiles"
 
 # Configure and alias tmuxifier
