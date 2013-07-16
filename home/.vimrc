@@ -19,19 +19,20 @@
     colorscheme solarized
     set background=light
     set t_Co=256
-    let g:airline_theme='solarized'
-    " Fix ttimeoutlen for exiting insert mode with Airline
-    set ttimeoutlen=50
-
-    let g:airline_powerline_fonts=0
 
   " Indent Guides
     let g:indent_guides_guide_size = 1
     let g:indent_guides_start_level = 2
     let g:indent_guides_enable_on_vim_startup = 1
 
+  " Airline
+    let g:airline_theme='solarized'
+    let g:airline_powerline_fonts=1
+    set noshowmode
+    " Fix ttimeoutlen for exiting insert mode with Airline
+    set ttimeoutlen=50
+
   set relativenumber " Default to relative lines being visible
-  set showmode " Show the mode that we're in
   set showcmd " Show (partial) command information on the last line of the screen
   set ruler " Show the current line/column number in the bottom right
   set laststatus=2 " Always show the status line on the last window
