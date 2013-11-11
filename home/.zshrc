@@ -26,6 +26,9 @@ alias tmuxifier="$TMUXIFIER/bin/tmuxifier"
 # Remap applications
 alias nano=vim
 
+# Start VMs easily
+alias vm-docker="VBoxHeadless --startvm Docker > /dev/null 2>&1 &"
+
 # ssh wrapper that rename current tmux window to the hostname of the
 # remote host.
 ssh() {
