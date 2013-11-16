@@ -29,6 +29,9 @@ alias nano=vim
 # Start VMs easily
 alias vm-docker="VBoxHeadless --startvm Docker > /dev/null 2>&1 &"
 
+# Pass wildcards through instead of globbing files
+alias ansible='noglob ansible'
+
 # ssh wrapper that rename current tmux window to the hostname of the
 # remote host.
 ssh() {
