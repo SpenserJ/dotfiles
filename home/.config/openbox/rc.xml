@@ -40,7 +40,7 @@
                     'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Onyx-black</name>
+    <name>Mint</name>
     <titleLayout>DSLIMC</titleLayout>
     <!--
       avaible characters are NDSLIMC, each can occur at most once.
@@ -455,14 +455,31 @@
     <keybind key="W-Up">
       <action name="GrowToEdgeNorth"/>
     </keybind>
-    <keybind key="W-A-Left">
+    <keybind key="C-W-Right">
+      <action name="ShrinkToEdge"><direction>east</direction></action>
+    </keybind>
+    <keybind key="C-W-Left">
+      <action name="ShrinkToEdge"><direction>west</direction></action>
+    </keybind>
+    <keybind key="C-W-Down">
+      <action name="ShrinkToEdge"><direction>south</direction></action>
+    </keybind>
+    <keybind key="C-W-Up">
+      <action name="ShrinkToEdge"><direction>north</direction></action>
+    </keybind>
+    <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
-        <command>cb-aerosnap --left</command>
+        <command>amixer set Master 5%+</command>
       </action>
     </keybind>
-    <keybind key="W-A-Right">
+    <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
-        <command>cb-aerosnap --right</command>
+        <command>amixer set Master 5%- unmute</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioMute">
+      <action name="Execute">
+        <command>amixer set Master toggle</command>
       </action>
     </keybind>
   </keyboard>
