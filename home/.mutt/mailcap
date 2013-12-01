@@ -1,0 +1,2 @@
+#text/html; lynx -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput
+#text/html; lynx %s; nametemplate=%s.html; needsterminal

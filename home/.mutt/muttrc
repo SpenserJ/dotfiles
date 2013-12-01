@@ -1,7 +1,16 @@
 source ~/.mutt/identity
 source ~/.mutt/solarized
 
-# Broken on some IMAP servers. Need to debug
-set sidebar_visible = no
+set imap_check_subscribed = yes
+set sidebar_sort = yes
+set sidebar_shortpath = yes
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
 
 bind index G imap-fetch-mail
+
+# HTML Email
+macro pager \cb 'urlview' 'Follow links with urlview'
+
+set editor="vim -c 'set spell spelllang=en'"
