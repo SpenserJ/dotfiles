@@ -1,0 +1,7 @@
+source ~/.mutt/identity
+source ~/.mutt/solarized
+
+# Broken on some IMAP servers. Need to debug
+set sidebar_visible = no
+
+bind index G imap-fetch-mail
