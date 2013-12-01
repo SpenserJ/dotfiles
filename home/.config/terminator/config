@@ -12,7 +12,7 @@
 
     scrollbar_position = hidden
     background_darkness = 0.85
-    background_type = transparent
+#background_type = transparent
     use_system_font = False
     scroll_on_output = False
     show_titlebar = False
