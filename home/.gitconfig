@@ -1,5 +1,5 @@
 [user]
-	email = spenser.e.jones@gmail.com
+	email = hello@spenserj.com
 	name = Spenser Jones
 [core]
 	editor = vim
@@ -10,3 +10,5 @@
 	renames = copies
 [alias]
   tree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[push]
+	default = simple
