@@ -54,3 +54,5 @@ ssh() {
         tmux rename-window "$old_name"
     fi
 }
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
