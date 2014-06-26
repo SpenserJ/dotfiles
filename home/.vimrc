@@ -3,6 +3,18 @@
 "
 " You can find me at http://spenserjones.com
 
+" Vundle
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Load some bundles
+Bundle 'chriskempson/base16-vim'
+
+" Re-enable filetype
+filetype on
+
 " Environment
   " Save our swap and history files to ~/.vimdata, to keep the working dir clean
     set directory=~/.vimdata// " // at the end sets the filename to full path, to ensure uniqueness
@@ -16,8 +28,8 @@
 
 " UI
   " Colour Scheme
-    colorscheme solarized
-    set background=light
+    colorscheme base16-tomorrow
+    set background=dark
     set t_Co=256
 
   " Indent Guides
