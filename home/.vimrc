@@ -16,6 +16,8 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
 Bundle 'raimondi/delimitmate'
 Bundle 'spf13/PIV'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
 Bundle 'garbas/vim-snipmate'
 Bundle 'majutsushi/tagbar'
 Bundle 'joonty/vdebug'
@@ -26,16 +28,12 @@ Bundle 'tpope/vim-surround'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle "pangloss/vim-javascript"
 
-" Re-enable filetype
-filetype on
-
 " Environment
   " Save our swap and history files to ~/.vimdata, to keep the working dir clean
     set directory=~/.vimdata// " // at the end sets the filename to full path, to ensure uniqueness
     set undodir=~/.vimdata
     set undofile " Save our undo history to a file when writing a file - Saves to undodir
 
-  execute pathogen#infect()
   filetype plugin on " Additional detection of filetypes
   set encoding=utf-8
   set ttyfast " We have a fast terminal connection, so send more at once
