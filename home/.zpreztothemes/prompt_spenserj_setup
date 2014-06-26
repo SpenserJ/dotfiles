@@ -113,16 +113,16 @@ prompt_end_right() {
 }
 
 function build_prompt {
-  prompt_segment green white "%~"
+  prompt_segment red white "%~"
   if [ -n "$vcs_info_msg_0_" ]; then
-    prompt_segment blue white $vcs_info_msg_0_
-    prompt_segment black white $(git_time_details)
+    prompt_segment blue black $vcs_info_msg_0_
+    prompt_segment cyan black $(git_time_details)
   fi
   prompt_end
 }
 
 function build_prompt_right {
-  prompt_segment_right black white "%D{%L:%M:%S %p}"
+  prompt_segment_right green black "%D{%L:%M:%S %p}"
   prompt_end_right
 }
 

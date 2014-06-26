@@ -28,7 +28,7 @@ filetype on
 
 " UI
   " Colour Scheme
-    colorscheme base16-tomorrow
+    colorscheme base16-default
     set background=dark
     set t_Co=256
 
