@@ -11,6 +11,20 @@ call vundle#rc()
 
 " Load some bundles
 Bundle 'chriskempson/base16-vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/syntastic'
+Bundle 'raimondi/delimitmate'
+Bundle 'spf13/PIV'
+Bundle 'garbas/vim-snipmate'
+Bundle 'majutsushi/tagbar'
+Bundle 'joonty/vdebug'
+Bundle 'bling/vim-airline'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-surround'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle "pangloss/vim-javascript"
 
 " Re-enable filetype
 filetype on
