@@ -79,10 +79,6 @@ filetype on
     nnoremap <F1> <NOP>
     vnoremap <F1> <NOP>
 
-  " Make j and k move a visual line instead of full line
-    :nmap j gj
-    :nmap k gk
-
   inoremap jj <ESC> " Switch back to normal mode when typing jj
   map <F2> :NERDTreeToggle<CR> " NERDTree
 
