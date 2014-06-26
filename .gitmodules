@@ -4,9 +4,6 @@
 [submodule "apps/tmuxifier"]
 	path = apps/tmuxifier
 	url = https://github.com/jimeh/tmuxifier.git
-[submodule "home/.vim/bundle/vim-less"]
-	path = home/.vim/bundle/vim-less
-	url = https://github.com/groenewege/vim-less.git
 [submodule "home/.vim/bundle/vundle"]
 	path = home/.vim/bundle/vundle
 	url = https://github.com/gmarik/vundle.git
