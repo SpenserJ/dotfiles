@@ -27,6 +27,7 @@ Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-surround'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle "pangloss/vim-javascript"
+Bundle 'airblade/vim-gitgutter'
 
 " Environment
   " Save our swap and history files to ~/.vimdata, to keep the working dir clean
@@ -65,6 +66,8 @@ Bundle "pangloss/vim-javascript"
   set scrolloff=3 " Scroll to retain lines above/below the current line
   set splitbelow " New splits should open below the current
   set splitright " New splits should open to the right of the current
+  highlight SignColumn ctermbg=black
+  highlight LineNr ctermfg=grey ctermbg=black
 
 " Key (re)mapping
   " Leaders
