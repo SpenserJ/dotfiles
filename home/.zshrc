@@ -1,10 +1,3 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
 # Ensure our custom themes will be found
 fpath=( ~/.zpreztothemes "${fpath[@]}" )
 
@@ -12,9 +5,6 @@ fpath=( ~/.zpreztothemes "${fpath[@]}" )
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
-
-# Source RVM
-[[ -s "$HOME/.rvm/scripts/rvm"  ]] && . "$HOME/.rvm/scripts/rvm"
 
 # Alias homesick/homeshick and set up folders
 source $HOME/.homesick/repos/homeshick/homeshick.sh
@@ -28,9 +18,6 @@ alias tmuxifier="$TMUXIFIER/bin/tmuxifier"
 
 # Remap applications
 alias nano=vim
-
-# Start VMs easily
-alias vm-docker="VBoxHeadless --startvm Docker > /dev/null 2>&1 &"
 
 # Pass wildcards through instead of globbing files
 alias ansible='noglob ansible'

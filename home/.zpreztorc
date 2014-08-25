@@ -1,14 +1,3 @@
-#
-# Sets Prezto options.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
-#
-# General
-#
-
 # Set case-sensitivity for completion, history lookup, etc.
 zstyle ':prezto:*:*' case-sensitive 'no'
 
@@ -21,90 +10,55 @@ zstyle ':prezto:*:*' color 'yes'
 # Set the Zsh functions to load (man zshcontrib).
 # zstyle ':prezto:load' zfunction 'zargs' 'zmv'
 
-# Set the Prezto modules to load (browse modules).
-# The order matters.
+##################
+# Prezto Modules #
+##################
+# Sets general shell options and env vars
+# Sets history options and aliases
+# Sets directory options and aliases
+# Provides general aliases/functions
+# Provides functions to list and extract archives
+# Loads the command-not-found tool
+#
+# Sets Keybindings
+# Configures tab completion for various apps
+# Enhances Git aliases and adds prompt support
+# Node.JS and npm completion
+# Defines rsync aliases
+# Defines tmux aliases and autostart support
+#
+# Loads Prompt themes
+# Adds syntax highlighting to the commandline
+# Search through history by substring
+# Provides easier use of 256 colors and effects
 zstyle ':prezto:load' pmodule \
-  'environment' \
-  'terminal' \
-  'editor' \
-  'history' \
-  'directory' \
-  'spectrum' \
-  'utility' \
-  'completion' \
-  'prompt' \
+  'environment'              \
+  'history'                  \
+  'directory'                \
+  'utility'                  \
+  'archive'                  \
+  'command-not-found'        \
 \
-  'archive' \
-  'command-not-found' \
-  'dpkg' \
+  'editor'                   \
+  'completion'               \
+  'git'                      \
+  'node'                     \
+  'rsync'                    \
+  'tmux'                     \
+\
+  'prompt'                   \
+  'syntax-highlighting'      \
   'history-substring-search' \
-  'node' \
-  'rsync' \
-  'tmux' \
-
-#
-# Editor
-#
+  'spectrum'
 
 # Set the key mapping style to 'emacs' or 'vi'.
 zstyle ':prezto:module:editor' keymap 'vi'
 
-# Auto convert .... to ../..
-# zstyle ':prezto:module:editor' dot-expansion 'yes'
-
-#
-# Git
-#
-
 # Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
 # zstyle ':prezto:module:git:status:ignore' submodules 'all'
 
-#
-# GNU Utility
-#
-
-# Set the command prefix on non-GNU systems.
-# zstyle ':prezto:module:gnu-utility' prefix 'g'
-
-#
-# Pacman
-#
-
-# Set the Pacman frontend.
-# zstyle ':prezto:module:pacman' frontend 'yaourt'
-
-#
-# Prompt
-#
-
 # Set the prompt theme to load.
-# Setting it to 'random' loads a random theme.
-# Auto set to 'off' on dumb terminals.
 zstyle ':prezto:module:prompt' theme 'spenserj'
-
-#
-# Screen
-#
-
-# Auto start a session when Zsh is launched.
-# zstyle ':prezto:module:screen' auto-start 'yes'
-
-#
-# GPG-Agent
-#
-
-# Enable SSH-Agent protocol emulation.
-# zstyle ':prezto:module:gpg-agent' ssh-support 'yes'
-
-#
-# SSH-Agent
-#
-
-# Enable ssh-agent forwarding.
-# zstyle ':prezto:module:ssh-agent' forwarding 'yes'
-
-# Set ssh-agent identities to load.
-# zstyle ':prezto:module:ssh-agent' identities 'id_rsa' 'id_rsa2' 'id_github'
 
 #
 # Syntax Highlighting
@@ -112,25 +66,14 @@ zstyle ':prezto:module:prompt' theme 'spenserj'
 
 # Set syntax highlighters.
 # By default main, brackets, and cursor are enabled.
-# zstyle ':prezto:module:syntax-highlighting' highlighters \
-#   'main' \
-#   'brackets' \
-#   'pattern' \
-#   'cursor' \
-#   'root'
+zstyle ':prezto:module:syntax-highlighting' color 'yes'
+zstyle ':prezto:module:syntax-highlighting' highlighters \
+  'main' \
+  'brackets' \
+  'pattern' \
+  'cursor' \
+  'root'
 
-#
-# Terminal
-#
-
-# Auto set the tab and window titles.
-zstyle ':prezto:module:terminal' auto-title 'yes'
-
-#
-# Tmux
-#
-
-# Auto start a session when Zsh is launched.
+# Auto start a Tmux session when Zsh is launched.
 zstyle ':prezto:module:tmux:auto-start' local  'yes'
 zstyle ':prezto:module:tmux:auto-start' remote 'yes'
-
