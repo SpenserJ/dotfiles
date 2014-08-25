@@ -54,18 +54,16 @@ zstyle ':prezto:load' pmodule \
 # Set the key mapping style to 'emacs' or 'vi'.
 zstyle ':prezto:module:editor' keymap 'vi'
 
+# Auto convert .... to ../..
+# zstyle ':prezto:module:editor' dot-expansion 'yes'
+
 # Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
 # zstyle ':prezto:module:git:status:ignore' submodules 'all'
 
 # Set the prompt theme to load.
 zstyle ':prezto:module:prompt' theme 'spenserj'
 
-#
-# Syntax Highlighting
-#
-
 # Set syntax highlighters.
-# By default main, brackets, and cursor are enabled.
 zstyle ':prezto:module:syntax-highlighting' color 'yes'
 zstyle ':prezto:module:syntax-highlighting' highlighters \
   'main' \
