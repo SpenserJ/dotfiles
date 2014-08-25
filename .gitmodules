@@ -5,5 +5,5 @@
 	path = apps/tmuxifier
 	url = https://github.com/jimeh/tmuxifier.git
 [submodule "home/.vim/bundle/vundle"]
-	path = home/.vim/bundle/vundle
+	path = home/.vim/bundle/Vundle.vim
 	url = https://github.com/gmarik/vundle.git

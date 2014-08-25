@@ -6,28 +6,33 @@
 " Vundle
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
 " Load some bundles
-Bundle 'chriskempson/base16-vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/syntastic'
-Bundle 'raimondi/delimitmate'
-Bundle 'spf13/PIV'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle 'garbas/vim-snipmate'
-Bundle 'majutsushi/tagbar'
-Bundle 'joonty/vdebug'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-surround'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle "pangloss/vim-javascript"
-Bundle 'airblade/vim-gitgutter'
+Plugin 'chriskempson/base16-vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
+Plugin 'raimondi/delimitmate'
+Plugin 'spf13/PIV'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'majutsushi/tagbar'
+Plugin 'joonty/vdebug'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-surround'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'pangloss/vim-javascript'
+Plugin 'airblade/vim-gitgutter'
+
+call vundle#end()
 
 " Environment
   " Save our swap and history files to ~/.vimdata, to keep the working dir clean
@@ -35,7 +40,7 @@ Bundle 'airblade/vim-gitgutter'
     set undodir=~/.vimdata
     set undofile " Save our undo history to a file when writing a file - Saves to undodir
 
-  filetype plugin on " Additional detection of filetypes
+  filetype plugin indent on " Additional detection of filetypes
   set encoding=utf-8
   set ttyfast " We have a fast terminal connection, so send more at once
 
