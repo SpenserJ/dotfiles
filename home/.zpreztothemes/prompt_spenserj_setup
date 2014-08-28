@@ -82,12 +82,7 @@ prompt_segment_right() {
   local bg fg
   [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
   [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
-  if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
-    echo -n " %{$bg%F{$CURRENT_BG}%}$POWERLINE_ARROW_LEFT_SOLID%{$fg%} "
-  else
-    echo -n "%F{$1}$POWERLINE_ARROW_LEFT_SOLID%{$bg%}%{$fg%} "
-  fi
-  CURRENT_BG=$1
+  echo -n " %F{$1}$POWERLINE_ARROW_LEFT_SOLID%{$bg%}%{$fg%} "
   [[ -n $3 ]] && print -Pn $3
 }
 
@@ -122,6 +117,11 @@ function build_prompt {
 }
 
 function build_prompt_right {
+  if [ "$vim_mode" = "INS" ]; then
+    prompt_segment_right blue black "${vim_mode}"
+  else
+    prompt_segment_right red white "${vim_mode}"
+  fi
   prompt_segment_right green black "%D{%L:%M:%S %p}"
   prompt_end_right
 }
@@ -197,6 +197,31 @@ function prompt_spenserj_setup {
 
   PROMPT=$prompt_newline'$(build_prompt)'$prompt_newline" "$POWERLINE_ARROW_RIGHT_LIGHT" "
   RPROMPT=$(build_prompt_right)
+}
+
+vim_ins_mode="INS"
+vim_cmd_mode="CMD"
+vim_mode=$vim_ins_mode
+
+function zle-keymap-select {
+  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+  RPROMPT=$(build_prompt_right)
+  zle reset-prompt
+}
+zle -N zle-keymap-select
+
+function zle-line-finish {
+  vim_mode=$vim_ins_mode
+}
+zle -N zle-line-finish
+
+# Fix a bug when you C-c in CMD mode and you'd be prompted with CMD mode indicator, while in fact you would be in INS mode
+# Fixed by catching SIGINT (C-c), set vim_mode to INS and then repropagate the SIGINT, so if anything else depends on it, we will not break it
+# Thanks Ron! (see comments)
+function TRAPINT() {
+  vim_mode=$vim_ins_mode
+  RPROMPT=$(build_prompt_right)
+  return $(( 128 + $1 ))
 }
 
 prompt_spenserj_setup "$@"

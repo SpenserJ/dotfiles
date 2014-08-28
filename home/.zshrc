@@ -22,6 +22,10 @@ alias nano=vim
 # Pass wildcards through instead of globbing files
 alias ansible='noglob ansible'
 
+# Enable Vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
 # ssh wrapper that rename current tmux window to the hostname of the
 # remote host.
 ssh() {
