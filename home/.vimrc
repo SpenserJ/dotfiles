@@ -28,6 +28,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'pangloss/vim-javascript'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'kien/ctrlp.vim'
 
 call vundle#end()
 
@@ -53,8 +54,9 @@ call vundle#end()
     let g:indent_guides_enable_on_vim_startup = 1
 
   " Airline
-    let g:airline_theme='solarized'
+    let g:airline_theme='base16'
     let g:airline_powerline_fonts=1
+    let g:airline#extensions#tabline#enabled = 1
     set noshowmode
     " Fix ttimeoutlen for exiting insert mode with Airline
     set ttimeoutlen=50
@@ -129,6 +131,15 @@ call vundle#end()
 
   let NERDSpaceDelims=1
 
+  " Ctrl-P
+    let g:ctrlp_working_path_mode = 'a'
+
+  " Git Gutter
+  "let g:gitgutter_sign_removed = '-'
+  highlight GitGutterAdd ctermbg=black
+  highlight GitGutterChange ctermbg=black
+  highlight GitGutterDelete ctermbg=black
+
 " Language Overrides
   if has("autocmd")
     " Drupal *.module and *.install files.
@@ -144,3 +155,9 @@ call vundle#end()
     autocmd BufRead,BufNewFile *.zone set filetype=bindzone
     autocmd FileType bindzone setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
   endif
+
+" Watch ~/.vimrc and reload on change
+augroup watchvimrc
+  au!
+  au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
