@@ -32,6 +32,7 @@
 
   call vundle#end()
 
+" Break up the vimrc into multiple files for clarity and organization
 source ~/.vim/rc/environment.vimrc
 source ~/.vim/rc/colorscheme.vimrc
 source ~/.vim/rc/editor.vimrc

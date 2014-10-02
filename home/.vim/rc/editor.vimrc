@@ -34,6 +34,7 @@ set splitright " New splits should open to the right of the current
 
 " Command Line Completion
   set wildmenu
+  " Tab will complete to the longest match, and display a list of options
   set wildmode=list:longest
 
 " Allow backspacing over indentation, line breaks, and the start of a line
