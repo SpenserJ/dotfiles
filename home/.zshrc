@@ -50,3 +50,21 @@ ssh() {
 }
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+export GET_TTY=$(tty)
+
+function chpwd() {
+  # If we're already unlocked, don't run any GPG commands
+  if [ -n "$GPG_AGENT_UNLOCKED" ] && [ $GPG_AGENT_UNLOCKED = 1 ]; then; return; fi
+
+  # Check if we're in a git dir, so we don't always prompt the user
+  GITDIR=$(git rev-parse 2>&1)
+  if [ "$GITDIR" != "" ]; then; return; fi
+
+  # See if GPG is signing successfully
+  GPG_OUTPUT=$(echo "test" | gpg -s 2>&1)
+  if [[ "$GPG_OUTPUT" != *"signing failed"* ]]; then
+    # Flag that GPG is already unlocked
+    export GPG_AGENT_UNLOCKED=1
+  fi
+}

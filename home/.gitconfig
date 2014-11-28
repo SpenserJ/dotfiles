@@ -1,6 +1,7 @@
 [user]
 	email = hello@spenserj.com
 	name = Spenser Jones
+  signingkey = 477D8D46
 [core]
 	editor = vim
 [color]
@@ -13,3 +14,5 @@
   vtag = tag --sort=version:refname
 [push]
 	default = simple
+[commit]
+  gpgsign = true
