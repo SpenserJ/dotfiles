@@ -28,7 +28,6 @@
   Plugin 'pangloss/vim-javascript'
   Plugin 'airblade/vim-gitgutter'
   Plugin 'kien/ctrlp.vim'
-  Plugin 'Lokaltog/vim-easymotion'
 
   call vundle#end()
 

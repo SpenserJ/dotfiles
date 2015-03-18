@@ -40,9 +40,8 @@ set splitright " New splits should open to the right of the current
 " Allow backspacing over indentation, line breaks, and the start of a line
   set backspace=indent,eol,start
 
-" EasyMotion
-  let g:EasyMotion_do_mapping = 0 " No default mappings
-  nmap s <Plug>(easymotion-s2) " Bi-directional find motion
+" Allow \s to replace all matching words under cursor
+  nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " Ctrl-P should search through the files ancestor path
   let g:ctrlp_working_path_mode = 'a'
