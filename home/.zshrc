@@ -54,6 +54,29 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export GET_TTY=$(tty)
 
 function chpwd() {
+  rename_window
+  unlock_gpg
+}
+
+function rename_window() {
+  SITE=$(pwd | awk '{match($0, "www/([^/]*)", site)}END{print site[1]}')
+  FOLDER=$(pwd | awk '{match($0, "/([^/]*)/?$", folder)}END{print folder[1]}')
+
+  # If we're not in a site right now, don't change the title
+  if [ -z "$SITE" ]; then
+    return
+  fi
+
+  # If we're in a subfolder, add that to the site
+  if [[ "$SITE" != "$FOLDER" ]]; then
+    SITE="$SITE - $FOLDER"
+  fi
+
+  tmux rename-window $SITE
+
+}
+
+function unlock_gpg() {
   # If we're already unlocked, don't run any GPG commands
   if [ -n "$GPG_AGENT_UNLOCKED" ] && [ $GPG_AGENT_UNLOCKED = 1 ]; then; return; fi
 
