@@ -25,7 +25,8 @@ servers = (
   { address = "irc.link-net.org"; chatnet = "LinkNet"; port = "6667"; },
   { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; },
   {
-    address = "docker.spenserj.com"; chatnet = "Bouncer-Freenode";
+    address = "docker.spenserj.com";
+    chatnet = "Bouncer-Freenode";
     port = "40667";
     password = "spenser/freenode:";
   }
@@ -95,12 +96,16 @@ chatnets = {
   };
   SILC = { type = "SILC"; };
   Ubuntu = { type = "IRC"; };
-  Bouncer-Rizon = { type = "IRC"; };
-  Bouncer-Freenode = { type = "IRC"; };
+  Freenode = { type = "IRC"; };
+  "Bouncer-Freenode" = { type = "IRC"; };
 };
 
 channels = (
-  { name = "#botwillacceptanything"; chatnet = "Bouncer-Freenode"; autojoin = "Yes"; },
+  {
+    name = "#botwillacceptanything";
+    chatnet = "Bouncer-Freenode";
+    autojoin = "Yes";
+  }
 );
 
 aliases = {
@@ -271,12 +276,12 @@ settings = {
     nick = "SpenserJ";
   };
   "fe-text" = { actlist_sort = "refnum"; };
-  "perl/core/scripts" = { nicklist_height = "46"; nicklist_width = "20"; };
+  "perl/core/scripts" = { nicklist_height = "56"; nicklist_width = "35"; };
 };
 hilights = (
   { text = "Malevolent"; nick = "yes"; word = "yes"; },
   { text = "Malev"; nick = "yes"; word = "yes"; },
   { text = "Jalapeno"; nick = "yes"; word = "yes"; },
-  { text = "Mal"; nick = "yes"; word = "yes"; }
-  { text = "spenser"; nick = "yes"; word = "yes"; },
+  { text = "Mal"; nick = "yes"; word = "yes"; },
+  { text = "spenser"; nick = "yes"; word = "yes"; }
 );
