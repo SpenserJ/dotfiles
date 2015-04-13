@@ -23,7 +23,12 @@ servers = (
   { address = "irc.webchat.org"; chatnet = "WebChat"; port = "6667"; },
   { address = "irc.rizon.net"; chatnet = "Rizon"; port = "6667"; },
   { address = "irc.link-net.org"; chatnet = "LinkNet"; port = "6667"; },
-  { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; }
+  { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; },
+  {
+    address = "docker.spenserj.com"; chatnet = "Bouncer-Freenode";
+    port = "40667";
+    password = "spenser/freenode:";
+  }
 );
 
 chatnets = {
@@ -90,15 +95,12 @@ chatnets = {
   };
   SILC = { type = "SILC"; };
   Ubuntu = { type = "IRC"; };
+  Bouncer-Rizon = { type = "IRC"; };
+  Bouncer-Freenode = { type = "IRC"; };
 };
 
 channels = (
-  { name = "#0ff-white"; chatnet = "rizon"; autojoin = "Yes"; },
-  { name = "#CityBus"; chatnet = "rizon"; autojoin = "Yes"; },
-  { name = "#CityBusPlease"; chatnet = "rizon"; autojoin = "Yes"; },
-  { name = "#CityBusForemen"; chatnet = "rizon"; autojoin = "Yes"; },
-  { name = "#TopiaOnline"; chatnet = "rizon"; autojoin = "Yes"; },
-  { name = "#TopiaOffline"; chatnet = "rizon"; autojoin = "Yes"; }
+  { name = "#botwillacceptanything"; chatnet = "Bouncer-Freenode"; autojoin = "Yes"; },
 );
 
 aliases = {
@@ -265,8 +267,8 @@ statusbar = {
 settings = {
   core = {
     real_name = "Spenser Jones";
-    user_name = "MalevolentSpice";
-    nick = "MalevolentSpice";
+    user_name = "SpenserJ";
+    nick = "SpenserJ";
   };
   "fe-text" = { actlist_sort = "refnum"; };
   "perl/core/scripts" = { nicklist_height = "46"; nicklist_width = "20"; };
@@ -276,4 +278,5 @@ hilights = (
   { text = "Malev"; nick = "yes"; word = "yes"; },
   { text = "Jalapeno"; nick = "yes"; word = "yes"; },
   { text = "Mal"; nick = "yes"; word = "yes"; }
+  { text = "spenser"; nick = "yes"; word = "yes"; },
 );

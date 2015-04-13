@@ -28,6 +28,7 @@
   Plugin 'pangloss/vim-javascript'
   Plugin 'airblade/vim-gitgutter'
   Plugin 'kien/ctrlp.vim'
+  Plugin 'lepture/vim-jinja'
 
   call vundle#end()
 
