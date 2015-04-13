@@ -26,6 +26,12 @@ alias ansible='noglob ansible'
 bindkey -v
 export KEYTIMEOUT=1
 
+NPM_PACKAGES="$HOME/.local/share/npm"
+NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+PATH="$NPM_PACKAGES/bin:$PATH"
+unset MANPATH
+MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+
 # ssh wrapper that rename current tmux window to the hostname of the
 # remote host.
 ssh() {
