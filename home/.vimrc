@@ -24,11 +24,11 @@
   Plugin 'tpope/vim-fugitive'
   Plugin 'tpope/vim-haml'
   Plugin 'tpope/vim-surround'
-  Plugin 'nathanaelkane/vim-indent-guides'
   Plugin 'pangloss/vim-javascript'
   Plugin 'airblade/vim-gitgutter'
   Plugin 'kien/ctrlp.vim'
   Plugin 'lepture/vim-jinja'
+  Plugin 'whatyouhide/vim-gotham'
 
   call vundle#end()
 
