@@ -1,18 +1,19 @@
 [user]
-	email = hello@spenserj.com
-	name = Spenser Jones
+  email = hello@spenserj.com
+  name = Spenser Jones
   signingkey = 477D8D46
 [core]
-	editor = vim
+  editor = vim
+  autocrlf = input
 [color]
-	ui = auto
-	interactive = auto
+  ui = auto
+  interactive = auto
 [diff]
-	renames = copies
+  renames = copies
 [alias]
   tree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   vtag = tag --sort=version:refname
 [push]
-	default = simple
+  default = simple
 [commit]
 #  gpgsign = true
