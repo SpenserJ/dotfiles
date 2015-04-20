@@ -14,7 +14,6 @@
   Plugin 'scrooloose/nerdcommenter'
   Plugin 'scrooloose/syntastic'
   Plugin 'raimondi/delimitmate'
-  Plugin 'spf13/PIV'
   Plugin 'MarcWeber/vim-addon-mw-utils'
   Plugin 'tomtom/tlib_vim'
   Plugin 'garbas/vim-snipmate'
@@ -29,6 +28,9 @@
   Plugin 'kien/ctrlp.vim'
   Plugin 'lepture/vim-jinja'
   Plugin 'whatyouhide/vim-gotham'
+  Plugin 'git://drupalcode.org/project/vimrc.git', { 'rtp': 'bundle/vim-plugin-for-drupal/' }
+  Plugin 'shawncplus/phpcomplete.vim'
+  Plugin 'ervandew/supertab'
 
   call vundle#end()
 
