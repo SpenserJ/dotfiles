@@ -27,6 +27,7 @@ servers = (
   {
     address = "docker.spenserj.com";
     chatnet = "Bouncer-Freenode";
+    autoconnect = "yes";
     port = "40667";
     password = "spenser/freenode:";
   }
