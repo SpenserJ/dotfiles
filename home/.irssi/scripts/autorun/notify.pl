@@ -1,1 +1,1 @@
-/home/spenser/.irssi/scripts/notifier/notify.pl
+../notifier/notify.pl
