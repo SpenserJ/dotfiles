@@ -65,8 +65,8 @@ function chpwd() {
 }
 
 function rename_window() {
-  SITE=$(pwd | awk '{match($0, "www/([^/]*)", site)}END{print site[1]}')
-  FOLDER=$(pwd | awk '{match($0, "/([^/]*)/?$", folder)}END{print folder[1]}')
+  SITE=$(pwd | awk 'match($0, "www/([^/]*)") { print substr($0, RSTART + 4, RLENGTH - 4) }')
+  FOLDER=$(pwd | awk 'match($0, "/([^/]*)/?$") { print substr($0, RSTART + 1, RLENGTH) }')
 
   # If we're not in a site right now, don't change the title
   if [ -z "$SITE" ]; then
