@@ -99,3 +99,26 @@ function unlock_gpg() {
 }
 
 alias steam-wine='WINEDEBUG=-all wine ~/.wine/drive_c/Program\ Files/Steam/Steam.exe -no-dwrite >/dev/null 2>&1 &'
+
+# Grep for an argument and open matching files in Vim, then search for the argument.
+vimgrep () {
+  if [ -z "$1" ]; then
+    echo "Please provide an string to search for";
+    return 1
+  fi
+
+  if [ -z "$2" ]; then
+    DIR=".";
+  else
+    DIR="$2";
+  fi
+
+  FILES=$(git grep --name-only "$1" "$DIR" | tr "\n" " ");
+
+  if [ -z "$FILES" ]; then
+    echo "No files found";
+    return $?;
+  fi
+
+  eval vim -c "/$1" $FILES;
+}
