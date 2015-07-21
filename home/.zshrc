@@ -1,15 +1,17 @@
 # Ensure our custom themes will be found
 fpath=( ~/.zpreztothemes "${fpath[@]}" )
 
+# Alias homesick/homeshick and set up folders
+source $HOME/.homesick/repos/homeshick/homeshick.sh
+alias homesick=homeshick
+# Add Homeshick completions to ZSH
+fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
+export DOTFILES="$HOME/.homesick/repos/dotfiles"
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
-
-# Alias homesick/homeshick and set up folders
-source $HOME/.homesick/repos/homeshick/homeshick.sh
-alias homesick=homeshick
-export DOTFILES="$HOME/.homesick/repos/dotfiles"
 
 # Configure and alias tmuxifier
 export TMUXIFIER="$DOTFILES/apps/tmuxifier"
