@@ -4,7 +4,7 @@ exec('git remote -v 2> /dev/null', $remotes);
 foreach ($remotes as $remote_raw) {
   if (strpos($remote_raw, '@') !== FALSE) { continue; }
 
-  preg_match('{(?<name>.*?)\s+(?<host>.*?):(?<path>(?<basename>.*?)(?:/public_html)?)(?:/.git)}', $remote_raw, $git_remote);
+  preg_match('{(?<name>.*?)\s+(?<host>.*?):(?<path>(?<basename>.*?)(?:/public_html|/httpdocs)?)(?:/.git)}', $remote_raw, $git_remote);
 
   $host = $git_remote['host'];
   $root = $git_remote['path'];
