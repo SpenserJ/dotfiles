@@ -27,7 +27,6 @@
   Plugin 'airblade/vim-gitgutter'
   Plugin 'kien/ctrlp.vim'
   Plugin 'lepture/vim-jinja'
-  Plugin 'whatyouhide/vim-gotham'
   Plugin 'git://drupalcode.org/project/vimrc.git', { 'rtp': 'bundle/vim-plugin-for-drupal/' }
   Plugin 'shawncplus/phpcomplete.vim'
   Plugin 'ervandew/supertab'

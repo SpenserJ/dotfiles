@@ -1,8 +1,7 @@
 " Colour Scheme
-  colorscheme gotham256
+  colorscheme base16-tomorrow
   set background=dark
-  set t_Co=256
 
 " Airline
-  let g:airline_theme='gotham256'
+  let g:airline_theme='base16'
   let g:airline_powerline_fonts=1
