@@ -19,7 +19,6 @@ foreach ($remotes as $remote_raw) {
     'uri' => $uri,
     'path-aliases' => array(
       '%files' => 'sites/default/files',
-      '%dump-dir' => '/tmp',
     ),
   );
 
