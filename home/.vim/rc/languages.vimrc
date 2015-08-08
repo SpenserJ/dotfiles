@@ -21,6 +21,7 @@
   let g:syntastic_auto_loc_list=1
   let g:syntastic_check_on_open=1
   let g:syntastic_javascript_jshint_args = '--config /home/spenser/.jshintrc'
+  let g:syntastic_javascript_checkers = ['jshint', 'eslint']
   " Disable PHPCS unless run manually
   " let g:syntastic_php_checkers = ['php']
 
