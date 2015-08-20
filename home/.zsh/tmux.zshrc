@@ -27,3 +27,7 @@ tmux-work () {
 tmux-misc () {
   tmux-launch 'misc' 'Misc'
 }
+
+tmux-ansible () {
+  tmux-launch 'ansible' 'Ansible'
+}

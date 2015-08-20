@@ -1,9 +1,10 @@
 # Move our initialization window to the very end
 move-window -s 1 -t 99
 
-neww -n 'Commands'
+neww -n 'Ansible'
+send-keys -t 'Ansible' 'cd ~/ansible && clear' C-m
 
-neww -n 'Devbox' 'ssh spenser.dev'
+neww -n 'Servers'
 
 # Switch to Window #1
 select-window -t 1
