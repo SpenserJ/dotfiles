@@ -73,6 +73,6 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
   'cursor' \
   'root'
 
-# Auto start a Tmux session when Zsh is launched.
-zstyle ':prezto:module:tmux:auto-start' local  'yes'
-zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+# Don't start a default tmux session
+zstyle ':prezto:module:tmux:auto-start' local  'no'
+zstyle ':prezto:module:tmux:auto-start' remote 'no'
