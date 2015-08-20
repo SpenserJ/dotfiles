@@ -30,6 +30,7 @@
   Plugin 'git://drupalcode.org/project/vimrc.git', { 'rtp': 'bundle/vim-plugin-for-drupal/' }
   Plugin 'shawncplus/phpcomplete.vim'
   Plugin 'ervandew/supertab'
+  Plugin 'PotatoesMaster/i3-vim-syntax'
 
   call vundle#end()
 
