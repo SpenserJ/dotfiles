@@ -20,6 +20,7 @@ alias tmuxifier="$TMUXIFIER/bin/tmuxifier"
 
 # Remap applications
 alias nano=vim
+VISUAL=vim
 
 # Pass wildcards through instead of globbing files
 alias ansible='noglob ansible'

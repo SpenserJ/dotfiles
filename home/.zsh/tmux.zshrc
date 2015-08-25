@@ -9,7 +9,10 @@ function tmux-launch {
   tmux has-session -t $1 2>/dev/null
   if [ "$?" -eq 1 ]; then
     echo "Creating session $NAME"
+    SAVED_TMUX="$TMUX"
+    TMUX=
     tmux new-session -d -s "$NAME" "tmux source-file ~/.tmux/sessions/$1"
+    TMUX="$SAVED_TMUX"
   fi
 
   # Switch to or attach the session
