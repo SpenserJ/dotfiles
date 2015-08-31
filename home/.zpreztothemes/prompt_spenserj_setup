@@ -18,52 +18,6 @@ POWERLINE_ARROW_RIGHT_LIGHT=""
 POWERLINE_ARROW_LEFT_SOLID=""
 POWERLINE_ARROW_LEFT_LIGHT=""
 
-# returns the time since last git commit
-function git_time_details() {
-  # only proceed if there is actually a git repository
-  if `git rev-parse --git-dir > /dev/null 2>&1`; then
-    # only proceed if there is actually a commit
-    if [[ $(git log 2>&1 > /dev/null | grep -c "^fatal: bad default revision") == 0 ]]; then
-      # get the last commit hash
-      # lc_hash=`git log --pretty=format:'%h' -1 2> /dev/null`
-      # get the last commit time
-      lc_time=`git log --pretty=format:'%at' -1 2> /dev/null`
-
-      now=`date +%s`
-      seconds_since_last_commit=$((now-lc_time))
-      lc_time_since=`time_since_commit $seconds_since_last_commit`
-
-      echo "$lc_time_since"
-    else
-      echo ""
-    fi
-  else
-    echo ""
-  fi
-}
-
-# returns the time by given seconds
-function time_since_commit() {
-  seconds_since_last_commit=$(($1 + 0))
-
-  # totals
-  MINUTES=$((seconds_since_last_commit / 60))
-  HOURS=$((seconds_since_last_commit/3600))
-
-  # sub-hours and sub-minutes
-  DAYS=$((seconds_since_last_commit / 86400))
-  SUB_HOURS=$((HOURS % 24))
-  SUB_MINUTES=$((MINUTES % 60))
-
-  if [ "$HOURS" -gt 24 ]; then
-    echo "${DAYS}d${SUB_HOURS}h${SUB_MINUTES}m"
-  elif [ "$MINUTES" -gt 60 ]; then
-    echo "${HOURS}h${SUB_MINUTES}m"
-  else
-    echo "${MINUTES}m"
-  fi
-}
-
 CURRENT_BG='NONE'
 prompt_segment() {
   local bg fg
@@ -78,14 +32,6 @@ prompt_segment() {
   [[ -n $3 ]] && print -Pn $3
 }
 
-prompt_segment_right() {
-  local bg fg
-  [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
-  [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
-  echo -n " %F{$1}$POWERLINE_ARROW_LEFT_SOLID%{$bg%}%{$fg%} "
-  [[ -n $3 ]] && print -Pn $3
-}
-
 # End the prompt, closing any open segments
 prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
@@ -97,34 +43,27 @@ prompt_end() {
   CURRENT_BG=''
 }
 
-prompt_end_right() {
-  if [[ -n $CURRENT_BG ]]; then
-    echo -n " %{%k%F{$CURRENT_BG}%}"
-  else
-    echo -n "%{%k%}"
-  fi
-  echo -n "%{%f%}"
-  CURRENT_BG=''
-}
-
 function build_prompt {
+  prompt_segment magenta black "%n@%m"
+
   prompt_segment red white "%~"
   if [ -n "$vcs_info_msg_0_" ]; then
     prompt_segment blue black $vcs_info_msg_0_
-    prompt_segment cyan black $(git_time_details)
   fi
+
   prompt_end
 }
 
-function build_prompt_right {
+function build_prompt_input {
   if [ "$vim_mode" = "INS" ]; then
-    prompt_segment_right blue black "${vim_mode}"
+    prompt_segment green black "${vim_mode}"
   else
-    prompt_segment_right red white "${vim_mode}"
+    prompt_segment yellow black "${vim_mode}"
   fi
-  prompt_segment_right green black "%D{%L:%M:%S %p}"
-  prompt_end_right
+  prompt_end
+  echo " "
 }
+
 
 function prompt_spenserj_precmd {
   # Check for untracked files or updated submodules since vcs_info doesn't.
@@ -195,32 +134,32 @@ function prompt_spenserj_setup {
   zstyle ':vcs_info:*:prompt:*' formats       "${fmt_branch}"
   zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
 
-  PROMPT=$prompt_newline'$(build_prompt)'$prompt_newline" "$POWERLINE_ARROW_RIGHT_LIGHT" "
-  RPROMPT=$(build_prompt_right)
+  PROMPT=$prompt_newline'$(build_prompt)'$prompt_newline"$(build_prompt_input)"
 }
 
 vim_ins_mode="INS"
 vim_cmd_mode="CMD"
 vim_mode=$vim_ins_mode
 
+function update-prompt {
+  PROMPT=$prompt_newline'$(build_prompt)'$prompt_newline"$(build_prompt_input)"
+  zle reset-prompt
+  zle -R
+}
+
 function zle-keymap-select {
   vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-  RPROMPT=$(build_prompt_right)
-  zle reset-prompt
+  update-prompt
 }
+zle -N zle-line-init
 zle -N zle-keymap-select
-
-function zle-line-finish {
-  vim_mode=$vim_ins_mode
-}
-zle -N zle-line-finish
 
 # Fix a bug when you C-c in CMD mode and you'd be prompted with CMD mode indicator, while in fact you would be in INS mode
 # Fixed by catching SIGINT (C-c), set vim_mode to INS and then repropagate the SIGINT, so if anything else depends on it, we will not break it
 # Thanks Ron! (see comments)
 function TRAPINT() {
   vim_mode=$vim_ins_mode
-  RPROMPT=$(build_prompt_right)
+  update-prompt
   return $(( 128 + $1 ))
 }
 
