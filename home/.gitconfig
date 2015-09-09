@@ -5,6 +5,7 @@
 [core]
   editor = vim
   autocrlf = input
+  fileMode = false
 [color]
   ui = auto
   interactive = auto
