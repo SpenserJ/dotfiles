@@ -134,4 +134,4 @@ bar {
 }
 
 # Set up multimonitors at work
-exec --no-startup-id xrandr --output DFP6 --auto --primary --output CRT1 --auto --right-of DFP6
+exec --no-startup-id ~/.i3/monitors

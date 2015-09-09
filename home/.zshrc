@@ -1,6 +1,9 @@
 # Ensure our custom themes will be found
 fpath=( ~/.zpreztothemes "${fpath[@]}" )
 
+# Source our current dotfiles environment.
+source ~/.dotfiles_env 2>/dev/null
+
 # Alias homesick/homeshick and set up folders
 source $HOME/.homesick/repos/homeshick/homeshick.sh
 alias homesick=homeshick
