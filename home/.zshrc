@@ -1,6 +1,8 @@
 # Ensure our custom themes will be found
 fpath=( ~/.zpreztothemes "${fpath[@]}" )
 
+source /etc/profile
+
 # Source our current dotfiles environment.
 source ~/.dotfiles_env 2>/dev/null
 
