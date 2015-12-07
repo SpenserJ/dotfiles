@@ -10,3 +10,6 @@
 [submodule "home/.tmux/plugins/tpm"]
 	path = home/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "home/.git-radar"]
+	path = home/.git-radar
+	url = https://github.com/michaeldfallen/git-radar

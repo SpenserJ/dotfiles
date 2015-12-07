@@ -1,0 +1,1 @@
+GIT_RADAR_FORMAT="\n %{$fg_bold[grey]%}git:(%{$reset_color%}%{remote: }%{branch}%{ :local}%{$fg_bold[grey]%})%{$reset_color%}%{ :stash}%{ :changes}"
