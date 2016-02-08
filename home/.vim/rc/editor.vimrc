@@ -13,6 +13,7 @@ syntax enable " Syntax highlighting
 set scrolloff=3 " Scroll to retain lines above/below the current line
 set splitbelow " New splits should open below the current
 set splitright " New splits should open to the right of the current
+set backupcopy=yes " Make Vim play nicely with Webpack
 
 " Indent Guides
   let g:indent_guides_guide_size = 1

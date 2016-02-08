@@ -17,13 +17,9 @@
   augroup END
 
 " Syntastic
-  let g:syntastic_php_phpcs_args="--standard=Drupal --extensions=php,module,inc,install,test,profile,theme"
   let g:syntastic_auto_loc_list=1
   let g:syntastic_check_on_open=1
-  let g:syntastic_javascript_jshint_args = '--config /home/spenser/.jshintrc'
-  let g:syntastic_javascript_checkers = ['jshint', 'eslint']
-  " Disable PHPCS unless run manually
-  " let g:syntastic_php_checkers = ['php']
+  let g:syntastic_javascript_checkers = ['eslint']
 
 " Code Folding for vimrc
   augroup vimrc_folding
