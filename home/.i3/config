@@ -135,3 +135,6 @@ bar {
 
 # Set up multimonitors at work
 exec --no-startup-id ~/.i3/monitors
+
+# Set a wallpaper changer
+exec ~/.wallpaper.sh
