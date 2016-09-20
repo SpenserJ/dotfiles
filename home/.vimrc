@@ -3,36 +3,44 @@
 "
 " You can find me at http://spenserj.com
 
-" Vundle
-  set nocompatible
-  filetype off
-  set rtp+=~/.vim/bundle/Vundle.vim
-  call vundle#begin()
+set nocompatible " No more vi compatibility
+
+" Plug
+  " Attempt to download vim-plug automatically
+	if empty(glob('~/.vim/autoload/plug.vim'))
+		silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+			\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		autocmd VimEnter * PlugInstall | source $MYVIMRC
+	endif
+
+  call plug#begin('~/.vim/bundle')
 
   " Load some bundles
-  Plugin 'chriskempson/base16-vim'
-  Plugin 'scrooloose/nerdcommenter'
-  Plugin 'scrooloose/syntastic'
-  Plugin 'raimondi/delimitmate'
-  Plugin 'MarcWeber/vim-addon-mw-utils'
-  Plugin 'tomtom/tlib_vim'
-  Plugin 'garbas/vim-snipmate'
-  Plugin 'majutsushi/tagbar'
-  Plugin 'joonty/vdebug'
-  Plugin 'bling/vim-airline'
-  Plugin 'tpope/vim-fugitive'
-  Plugin 'tpope/vim-haml'
-  Plugin 'tpope/vim-surround'
-  Plugin 'pangloss/vim-javascript'
-  Plugin 'airblade/vim-gitgutter'
-  Plugin 'kien/ctrlp.vim'
-  Plugin 'lepture/vim-jinja'
-  Plugin 'shawncplus/phpcomplete.vim'
-  Plugin 'ervandew/supertab'
-  Plugin 'PotatoesMaster/i3-vim-syntax'
-  Plugin 'editorconfig/editorconfig-vim'
+    " Themes
+    Plug 'chriskempson/base16-vim'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
 
-  call vundle#end()
+    " Linting
+    Plug 'scrooloose/syntastic'
+    Plug 'pmsorhaindo/syntastic-local-eslint.vim'
+
+    " Language Support
+    Plug 'tpope/vim-haml'
+    Plug 'lepture/vim-jinja'
+    Plug 'PotatoesMaster/i3-vim-syntax'
+    Plug 'pangloss/vim-javascript' | Plug 'mxw/vim-jsx'
+    Plug 'elzr/vim-json'
+
+    " Editor Upgrades
+    Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'raimondi/delimitmate'
+    Plug 'tpope/vim-surround'
+    Plug 'editorconfig/editorconfig-vim'
+    Plug 'nathanaelkane/vim-indent-guides'
+
+  call plug#end()
 
 " Break up the vimrc into multiple files for clarity and organization
 source ~/.vim/rc/environment.vimrc
