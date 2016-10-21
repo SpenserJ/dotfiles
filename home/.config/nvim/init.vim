@@ -46,9 +46,9 @@ set nocompatible " No more vi compatibility
   call plug#end()
 
 " Break up the vimrc into multiple files for clarity and organization
-source ~/.vim/rc/environment.vimrc
-source ~/.vim/rc/colorscheme.vimrc
-source ~/.vim/rc/editor.vimrc
-source ~/.vim/rc/keys.vimrc
-source ~/.vim/rc/languages.vimrc
-source ~/.vim/rc/color_overrides.vimrc
+source ~/.config/nvim/rc/environment.vimrc
+source ~/.config/nvim/rc/colorscheme.vimrc
+source ~/.config/nvim/rc/editor.vimrc
+source ~/.config/nvim/rc/keys.vimrc
+source ~/.config/nvim/rc/languages.vimrc
+source ~/.config/nvim/rc/color_overrides.vimrc
