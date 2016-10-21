@@ -22,8 +22,10 @@ set nocompatible " No more vi compatibility
     Plug 'vim-airline/vim-airline-themes'
 
     " Linting
-    Plug 'scrooloose/syntastic'
-    Plug 'pmsorhaindo/syntastic-local-eslint.vim'
+    " Plug 'scrooloose/syntastic'
+    " Plug 'pmsorhaindo/syntastic-local-eslint.vim'
+    Plug 'neomake/neomake'
+    Plug 'benjie/neomake-local-eslint.vim'
 
     " Language Support
     Plug 'tpope/vim-haml'
@@ -39,6 +41,7 @@ set nocompatible " No more vi compatibility
     Plug 'tpope/vim-surround'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'sjl/gundo.vim'
 
   call plug#end()
 

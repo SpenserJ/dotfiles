@@ -49,3 +49,6 @@ set backupcopy=yes " Make Vim play nicely with Webpack
 
 " Place spaces after comment chars
   let NERDSpaceDelims=1
+
+  " Use Gundo with <Leader>u
+  nnoremap <leader>u :GundoToggle<CR>

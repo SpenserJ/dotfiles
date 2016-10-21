@@ -17,9 +17,11 @@
   augroup END
 
 " Syntastic
-  let g:syntastic_auto_loc_list=1
-  let g:syntastic_check_on_open=1
-  let g:syntastic_javascript_checkers = ['eslint']
+"  let g:syntastic_auto_loc_list=1
+"  let g:syntastic_check_on_open=1
+"  let g:syntastic_javascript_checkers = ['eslint']
+  let g:neomake_javascript_enabled_makers = ['eslint']
+  autocmd! BufReadPost,BufWritePost * Neomake
 
 " Code Folding for vimrc
   augroup vimrc_folding

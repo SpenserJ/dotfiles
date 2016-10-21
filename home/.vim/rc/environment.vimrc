@@ -12,6 +12,9 @@ set ttyfast " We have a fast terminal connection, so send more at once
   " Fix ttimeoutlen for exiting insert mode with Airline
   set ttimeoutlen=50
 
+" Disable the mouse
+set mouse =
+
 " Watch ~/.vimrc and reload on change
 augroup watchvimrc
   au!
