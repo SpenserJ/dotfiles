@@ -1,1 +1,1 @@
-/home/spenser/.vimrc
+../../../../.vimrc
