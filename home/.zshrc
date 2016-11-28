@@ -135,4 +135,8 @@ function duf {
   du -sk "$@" | sort -n | while read size fname; do for unit in k M G T P E Z Y; do if [ $size -lt 1024 ]; then echo -e "${size}${unit}\t${fname}"; break; fi; size=$((size/1024)); done; done
 }
 
+function gitCleanRemoteBranches {
+  git push --delete origin $(git branch -a --no-merged | grep origin | grep -v 'master\|release-1.3\|development\|HEAD' | sed 's/remotes\/origin\///')
+}
+
 source ~/.zsh/tmux.zshrc
