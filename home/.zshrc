@@ -136,7 +136,7 @@ function duf {
 }
 
 function gitCleanRemoteBranches {
-  git push --delete origin $(git branch -a --no-merged | grep origin | grep -v 'master\|release-1.3\|development\|HEAD' | sed 's/remotes\/origin\///')
+  git push --delete origin $(git branch -a --merged | grep origin | grep -v 'master\|release-1.3\|development\|HEAD' | sed 's/remotes\/origin\///')
 }
 
 source ~/.zsh/tmux.zshrc
