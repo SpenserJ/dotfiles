@@ -10,6 +10,9 @@ case "$DOTFILES_ENV" in
   aware360)
     xrandr --output VBOX0 --auto --primary --output VBOX1 --auto --right-of VBOX0
     ;;
+  vizworx)
+    xrandr --output VGA-1 --auto --primary
+    ;;
   vm)
     xrandr --output VGA-0 --auto --primary --output VGA-1 --auto --right-of VGA-0
     ;;
