@@ -77,10 +77,10 @@ set $workspace4 "KeePass"
 set $workspace5 "Misc"
 
 # switch to workspace
-bindsym $mod+1 workspace $workspace1; exec [ $(ps h -C gnome-terminal-server | wc -l) = 0 ] && i3-sensible-terminal
-bindsym $mod+2 workspace $workspace2; exec [ $(ps h -C chrome | wc -l) = 0 ] && google-chrome
+bindsym $mod+1 workspace $workspace1; exec ~/.i3/workspace_terminal.sh
+bindsym $mod+2 workspace $workspace2; exec [ $(ps h -C chrome | wc -l) = 0 ] && google-chrome-stable
 bindsym $mod+3 workspace $workspace3; exec [ $(ps h -C slack | wc -l) = 0 ] && slack
-bindsym $mod+4 workspace $workspace4; exec [ $(ps h -C cli | grep KeePass.exe | wc -l) = 0 ] && keepass2
+bindsym $mod+4 workspace $workspace4; exec ~/.i3/workspace_keepass.sh 
 bindsym $mod+5 workspace $workspace5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
