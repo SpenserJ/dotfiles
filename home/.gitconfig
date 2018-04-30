@@ -12,7 +12,7 @@
 [diff]
   renames = copies
 [alias]
-  tree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  tree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   vtag = tag --sort=version:refname
   cleanup = "!git branch --merged | grep -v '\\*\\|master\\|development\\|release-\\*' | xargs -n 1 git branch -d"
 [push]
