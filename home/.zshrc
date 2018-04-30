@@ -143,4 +143,8 @@ function gitCleanRemoteBranches {
   git push --delete origin $(git branch -a --merged | grep origin | grep -v 'master\|release-1.3\|development\|HEAD' | sed 's/remotes\/origin\///')
 }
 
+function today {
+  vim ~/spenser.e.jones@gmail.com/orgmode/journal/$(date +%Y-%m-%d).org
+}
+
 source ~/.zsh/tmux.zshrc

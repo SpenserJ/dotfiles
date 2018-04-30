@@ -42,6 +42,7 @@ set nocompatible " No more vi compatibility
     Plug 'editorconfig/editorconfig-vim'
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'sjl/gundo.vim'
+    Plug 'jceb/vim-orgmode'
 
   call plug#end()
 
