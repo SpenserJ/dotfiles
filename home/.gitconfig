@@ -3,7 +3,7 @@
   name = Spenser Jones
   signingkey = 477D8D46
 [core]
-  editor = vim
+  editor = nvim
   autocrlf = input
   fileMode = false
 [color]

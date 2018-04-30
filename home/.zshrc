@@ -28,8 +28,11 @@ export TMUXIFIER_LAYOUT_PATH="$HOME/.tmuxifier"
 alias tmuxifier="$TMUXIFIER/bin/tmuxifier"
 
 # Remap applications
-alias nano=vim
-VISUAL=vim
+alias nano=nvim
+alias vi=nvim
+alias vim=nvim
+VISUAL=nvim
+EDITOR=nvim
 
 # Pass wildcards through instead of globbing files
 alias ansible='noglob ansible'
