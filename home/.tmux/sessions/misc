@@ -1,4 +1,0 @@
-# Move our initialization window to the very end
-move-window -s 1 -t 99
-
-neww

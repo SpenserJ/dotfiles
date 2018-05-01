@@ -145,7 +145,5 @@ function today {
   vim ~/spenser.e.jones@gmail.com/orgmode/journal/$(date +%Y-%m-%d).org
 }
 
-source ~/.zsh/tmux.zshrc
-
 # Reload Colour scheme
 (cat ~/.cache/wal/sequences &)

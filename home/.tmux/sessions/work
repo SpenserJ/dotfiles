@@ -1,9 +1,0 @@
-# Move our initialization window to the very end
-move-window -s 1 -t 99
-
-neww -n 'Commands'
-
-neww -n 'Devbox' 'ssh spenser.dev'
-
-# Switch to Window #1
-select-window -t 1
