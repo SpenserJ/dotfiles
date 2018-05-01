@@ -1,9 +1,6 @@
 [submodule "home/.zprezto"]
 	path = home/.zprezto
 	url = https://github.com/sorin-ionescu/prezto.git
-[submodule "apps/tmuxifier"]
-	path = apps/tmuxifier
-	url = https://github.com/jimeh/tmuxifier.git
 [submodule "home/.tmux/plugins/tpm"]
 	path = home/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
