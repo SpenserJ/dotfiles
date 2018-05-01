@@ -24,12 +24,17 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
 bindsym $mod+d exec rofi -show run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+Shift+d exec --no-startup-id morc_menu
+
+# Sound
+exec --no-startup-id volumeicon
+bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+#exec --no-startup-id pulseaudio
+#exec --no-startup-id pa-applet
+#bindsym $mod+Ctrl+m exec pavucontrol
+
+bindsym Print exec --no-startup-id i3-scrot -s
 
 # change focus
 bindsym $mod+h focus left
@@ -78,7 +83,7 @@ set $workspace5 "Misc"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1; exec ~/.i3/workspace_terminal.sh
-bindsym $mod+2 workspace $workspace2; exec [ $(ps h -C chrome | wc -l) = 0 ] && google-chrome-stable
+bindsym $mod+2 workspace $workspace2; exec [ $(ps h -C chromium | wc -l) = 0 ] && chromium
 bindsym $mod+3 workspace $workspace3; exec [ $(ps h -C slack | wc -l) = 0 ] && slack
 bindsym $mod+4 workspace $workspace4; exec ~/.i3/workspace_keepass.sh 
 bindsym $mod+5 workspace $workspace5
@@ -107,10 +112,40 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# Set shut down, restart and locking features
+bindsym $mod+Ctrl+e mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
 # Bind the Multimedia Keys
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
+
+# Open specific applications in floating mode
+for_window [title="alsamixer"] floating enable border pixel 1
+for_window [title="File Transfer*"] floating enable
+for_window [class="GParted"] floating enable border normal
+for_window [class="Lightdm-gtk-greeter-settings"] floating enable
+for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="Pavucontrol"] floating enable
+for_window [class="qt5ct"] floating enable sticky enable border normal
+for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+for_window [class="Timeset-gui"] floating enable border normal
+for_window [class="(?i)virtualbox"] floating enable border normal
+for_window [class="Xfburn"] floating enable
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -143,16 +178,23 @@ exec --no-startup-id ~/.i3/monitors
 exec --no-startup-id insync start
 exec --no-startup-id nm-applet
 exec --no-startup-id i3-sensible-terminal
-exec --no-startup-id chrome
+exec --no-startup-id chromium
 exec --no-startup-id slack
-exec --no-startup-id keepass2
+# exec --no-startup-id keepass2
+exec --no-startup-id keepassxc
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id compton -b
+exec --no-startup-id xfce4-power-manager
+#exec --no-startup-id xautolock -time 10 -locker blurlock
 
 # Set up Polybar
 exec_always --no-startup-id ~/.i3/polybar.sh &
 
 # Open applications on specific workspaces
 assign [class="Gnome-terminal"] $workspace1
+assign [class="URxvt"] $workspace1
 assign [class="Google-chrome"] $workspace2
+assign [class="Chromium"] $workspace2
 assign [class="Slack"] $workspace3
 assign [class="KeePass2"] $workspace4
 

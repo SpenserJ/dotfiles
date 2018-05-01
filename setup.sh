@@ -22,8 +22,8 @@ if [ "$OS" == "LinuxMint" ] || [ "$OS" == "Ubuntu" ]; then
 elif [ "$OS" == "ManjaroLinux" ]; then
   echo "Detected OS as Manjaro Linux"
 
-  sudo pacman -Syu --noconfirm base-devel yaourt neovim tmux zsh dunst libmpdclient wireless_tools jsoncpp i3-wm keepassxc
-  yaourt -S --noconfirm polybar ttf-font-awesome-4 google-chrome slack-desktop insync python-wal
+  sudo pacman -Syu --noconfirm base-devel yaourt neovim tmux zsh dunst libmpdclient wireless_tools jsoncpp i3-wm keepassxc chromium
+  yaourt -S --noconfirm polybar ttf-font-awesome-4 slack-desktop insync python-wal
 else
   echo "Could not detect OS"
   exit
