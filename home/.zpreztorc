@@ -45,12 +45,12 @@ zstyle ':prezto:load' pmodule \
   'node'                     \
   'rsync'                    \
   'tmux'                     \
-  'gpg'                      \
 \
   'prompt'                   \
   'syntax-highlighting'      \
   'history-substring-search' \
   'spectrum'
+#  'gpg'                      \
 
 # Set the key mapping style to 'emacs' or 'vi'.
 zstyle ':prezto:module:editor' keymap 'vi'

@@ -6,22 +6,6 @@
 #
 
 #
-# Browser
-#
-
-if [[ "$OSTYPE" == darwin* ]]; then
-  export BROWSER='open'
-fi
-
-#
-# Editors
-#
-
-export EDITOR='nano'
-export VISUAL='nano'
-export PAGER='less'
-
-#
 # Language
 #
 

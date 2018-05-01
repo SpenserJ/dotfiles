@@ -109,7 +109,7 @@ label-focused-padding = 2
 label-unfocused = %icon%
 label-unfocused-padding = 2
 
-label-urgent = %index%!
+label-urgent = %icon% %name%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
