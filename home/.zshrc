@@ -146,3 +146,6 @@ function today {
 }
 
 source ~/.zsh/tmux.zshrc
+
+# Reload Colour scheme
+(cat ~/.cache/wal/sequences &)

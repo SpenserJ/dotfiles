@@ -18,12 +18,12 @@ if [ "$OS" == "LinuxMint" ] || [ "$OS" == "Ubuntu" ]; then
   sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
 
   # Install standard dependencies
-  sudo apt-get install tmux zsh dunst polybar
+  sudo apt-get install tmux zsh dunst polybar feh
 elif [ "$OS" == "ManjaroLinux" ]; then
   echo "Detected OS as Manjaro Linux"
 
   sudo pacman -Syu --noconfirm base-devel yaourt neovim tmux zsh dunst libmpdclient wireless_tools jsoncpp i3-wm keepassxc
-  yaourt -S --noconfirm polybar ttf-font-awesome-4 google-chrome slack-desktop insync
+  yaourt -S --noconfirm polybar ttf-font-awesome-4 google-chrome slack-desktop insync python-wal
 else
   echo "Could not detect OS"
   exit
