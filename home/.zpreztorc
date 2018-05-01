@@ -22,15 +22,14 @@ zstyle ':prezto:*:*' color 'yes'
 #
 # Sets Keybindings
 # Configures tab completion for various apps
-# Enhances Git aliases and adds prompt support
 # Node.JS and npm completion
-# Defines rsync aliases
 # Defines tmux aliases and autostart support
 #
 # Loads Prompt themes
 # Adds syntax highlighting to the commandline
 # Search through history by substring
 # Provides easier use of 256 colors and effects
+
 zstyle ':prezto:load' pmodule \
   'environment'              \
   'history'                  \
@@ -41,14 +40,13 @@ zstyle ':prezto:load' pmodule \
 \
   'editor'                   \
   'completion'               \
-  'git'                      \
   'node'                     \
-  'rsync'                    \
   'tmux'                     \
 \
   'prompt'                   \
   'syntax-highlighting'      \
   'history-substring-search' \
+  'autosuggestions'          \
   'spectrum'
 #  'gpg'                      \
 
@@ -56,10 +54,7 @@ zstyle ':prezto:load' pmodule \
 zstyle ':prezto:module:editor' keymap 'vi'
 
 # Auto convert .... to ../..
-# zstyle ':prezto:module:editor' dot-expansion 'yes'
-
-# Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
-# zstyle ':prezto:module:git:status:ignore' submodules 'all'
+zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # Set the prompt theme to load.
 zstyle ':prezto:module:prompt' theme 'spenserj'
