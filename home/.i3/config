@@ -34,6 +34,11 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 #exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
 
+# Bind the Multimedia Keys
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
+
 bindsym Print exec --no-startup-id i3-scrot -s
 
 # change focus
@@ -129,11 +134,6 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-# Bind the Multimedia Keys
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggle
-
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [title="File Transfer*"] floating enable
@@ -197,6 +197,7 @@ assign [class="Google-chrome"] $workspace2
 assign [class="Chromium"] $workspace2
 assign [class="Slack"] $workspace3
 assign [class="KeePass2"] $workspace4
+assign [class="keepassxc"] $workspace4
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -205,5 +206,26 @@ for_window [urgent=latest] focus
 for_window [class="^.*"] border pixel 2
 gaps inner 20
 gaps outer 0
-smart_gaps on
-smart_borders on
+# smart_gaps on
+# smart_borders on
+
+# Add noop bars for polybar centering
+bar {
+  i3bar_command i3bar -t
+  position top
+  tray_output         none  # do not show tray output
+  workspace_buttons   no    # do not show workspace buttons
+  height              20    # same height as polybar
+
+  # prevent any accidental clicks/scrolls
+  bindsym button1 nop
+  bindsym button2 nop
+  bindsym button3 nop
+  bindsym button4 nop
+  bindsym button5 nop
+
+  colors {
+    # set bar background to transparent
+    background #00000000
+  }
+}

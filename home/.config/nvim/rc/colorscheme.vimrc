@@ -3,7 +3,7 @@
 "    let base16colorspace=256
 "    source ~/.vimrc_background
 "  endif
-  colorscheme wal
+  colorscheme base16-tomorrow-night
 
 " Airline
   let g:airline_theme='base16_tomorrow'

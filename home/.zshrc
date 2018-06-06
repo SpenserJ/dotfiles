@@ -146,4 +146,4 @@ function today {
 }
 
 # Reload Colour scheme
-(cat ~/.cache/wal/sequences &)
+# (cat ~/.cache/wal/sequences &)

@@ -1,3 +1,43 @@
+!! Base16 Tomorrow Dark
+! special
+*.foreground:   #c5c8c6
+*.background:   #1d1f21
+*.cursorColor:  #c5c8c6
+
+! black
+*.color0:       #1d1f21
+*.color8:       #969896
+
+! red
+*.color1:       #cc6666
+*.color9:       #cc6666
+
+! green
+*.color2:       #b5bd68
+*.color10:      #b5bd68
+
+! yellow
+*.color3:       #f0c674
+*.color11:      #f0c674
+
+! blue
+*.color4:       #81a2be
+*.color12:      #81a2be
+
+! magenta
+*.color5:       #b294bb
+*.color13:      #b294bb
+
+! cyan
+*.color6:       #8abeb7
+*.color14:      #8abeb7
+
+! white
+*.color7:       #c5c8c6
+*.color15:      #ffffff
+
+
+
 Xft.dpi: 96
 Xft.antialias: true
 Xft.hinting: true
@@ -6,59 +46,59 @@ Xft.autohint: false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 
-XTerm*background: #2b2b2b
-XTerm*foreground: #e7e7e7
-XTerm*pointerColor: #16A085
-XTerm*faceName: Fixed
-XTerm*faceSize: 11
+!!!XTerm*background: #2b2b2b
+!!!XTerm*foreground: #e7e7e7
+!!!XTerm*pointerColor: #16A085
+!!!XTerm*faceName: Fixed
+!!!XTerm*faceSize: 11
 
-*background:                      #272827
-*foreground:                      #657b83
-*fading:                          15
-*fadeColor:                       black
-*cursorColor:                     #16A085
-*pointerColorBackground:          #2B2C2B
-*pointerColorForeground:          #16A085
+!!!*background:                      #272827
+!!!*foreground:                      #657b83
+!!!*fading:                          15
+!!!*fadeColor:                       black
+!!!*cursorColor:                     #16A085
+!!!*pointerColorBackground:          #2B2C2B
+!!!*pointerColorForeground:          #16A085
 
-!! black dark/light
-*color0:                          #232423
-*color8:                          #282928
-
-!! red dark/light
-*color1:                          #BA2922
-*color9:                          #CC372C
-
-!! green dark/light
-*color2:                          #7E807E
-*color10:                         #8D8F8D
-
-!! yellow dark/light
-*color3:                          #4C4F4D
-*color11:                         #4E524F
-
-!! blue dark/light
-*color4:                          #16A085
-*color12:                         #13BF9D
-
-!! magenta dark/light
-*color5:                          #43746A
-*color13:                         #487D72
-
-!! cyan dark/light
-*color6:                          #00CCCC
-*color14:                         #00D1D1
-
-!! white dark/light
-*color7:                          #E0E0E0
-*color15:                         #E8E8E8
-
-Xcursor.theme: xcursor-breeze
-Xcursor.size:                     0
-
-XTerm*background:                 #272827
-XTerm*foreground:                 #fdf6e3
+!!!!! black dark/light
+!!!*color0:                          #232423
+!!!*color8:                          #282928
+!!!
+!!!!! red dark/light
+!!!*color1:                          #BA2922
+!!!*color9:                          #CC372C
+!!!
+!!!!! green dark/light
+!!!*color2:                          #7E807E
+!!!*color10:                         #8D8F8D
+!!!
+!!!!! yellow dark/light
+!!!*color3:                          #4C4F4D
+!!!*color11:                         #4E524F
+!!!
+!!!!! blue dark/light
+!!!*color4:                          #16A085
+!!!*color12:                         #13BF9D
+!!!
+!!!!! magenta dark/light
+!!!*color5:                          #43746A
+!!!*color13:                         #487D72
+!!!
+!!!!! cyan dark/light
+!!!*color6:                          #00CCCC
+!!!*color14:                         #00D1D1
+!!!
+!!!!! white dark/light
+!!!*color7:                          #E0E0E0
+!!!*color15:                         #E8E8E8
+!!!
+!!!Xcursor.theme: xcursor-breeze
+!!!Xcursor.size:                     0
+!!!
+!!!XTerm*background:                 #272827
+!!!XTerm*foreground:                 #fdf6e3
 XTerm*reverseVideo:               on
-XTerm*faceName:                   Terminus:size=11:antialias=true
+!!!XTerm*faceName:                   Terminus:size=11:antialias=true
 XTerm*selectToClipboard:          true
 
 URxvt.font:                       9x15,xft:TerminessTTFNerdFontMono
@@ -69,12 +109,12 @@ URxvt.font:                       9x15,xft:TerminessTTFNerdFontMono
 !! terminus names see end of file!
 
 URxvt.depth:                      32
-URxvt.background:                 [80]#000000
+!!!URxvt.background:                 [80]#000000
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true
-URxvt*background:                 black
-URxvt*foreground:                 grey
+!!!URxvt*background:                 black
+!!!URxvt*foreground:                 grey
 URxvt*saveLines:                  5000
 
 ! for 'fake' transparency (without Compton) uncomment the following three lines
@@ -227,3 +267,8 @@ URxvt*saveLines:                  5000
 ! -xos4-terminus-bold-r-normal--24-240-72-72-c-120-iso10646-1
 ! -xos4-terminus-bold-r-normal--28-280-72-72-c-140-iso10646-1
 ! -xos4-terminus-bold-r-normal--32-320-72-72-c-160-iso10646-1
+
+! Rebind URxvt copy/paste
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.iso14755: false

@@ -20,7 +20,6 @@ set nocompatible " No more vi compatibility
     Plug 'chriskempson/base16-vim'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'dylanaraps/wal.vim'
 
     " Linting
     " Plug 'scrooloose/syntastic'
