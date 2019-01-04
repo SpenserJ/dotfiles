@@ -42,6 +42,8 @@ PATH="$NPM_PACKAGES/bin:$PATH"
 unset MANPATH
 MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
+PATH="$HOME/.local/bin:$PATH"
+
 # ssh wrapper that rename current tmux window to the hostname of the
 # remote host.
 ssh() {
@@ -137,8 +139,20 @@ function duf {
   du -sk "$@" | sort -n | while read size fname; do for unit in k M G T P E Z Y; do if [ $size -lt 1024 ]; then echo -e "${size}${unit}\t${fname}"; break; fi; size=$((size/1024)); done; done
 }
 
+function gitCleanLocalBranches {
+  DEVELOP="$1"
+  if [ -z "$DEVELOP" ]; then
+    DEVELOP="develop"
+  fi
+  git checkout "$DEVELOP" && git pull && git branch -d $(git branch --merged | grep -v 'master\|develop')
+}
+
 function gitCleanRemoteBranches {
-  git push --delete origin $(git branch -a --merged | grep origin | grep -v 'master\|release-1.3\|development\|HEAD' | sed 's/remotes\/origin\///')
+  git checkout development && git pull && git push --delete origin $(git branch -a --merged | grep origin | grep -v 'master\|release-\|develop\|HEAD' | sed 's/remotes\/origin\///')
+}
+
+function vimLinting {
+  vim $(npm run lint | grep "^$HOME")
 }
 
 function today {
