@@ -148,7 +148,15 @@ function gitCleanLocalBranches {
 }
 
 function gitCleanRemoteBranches {
-  git checkout development && git pull && git push --delete origin $(git branch -a --merged | grep origin | grep -v 'master\|release-\|develop\|HEAD' | sed 's/remotes\/origin\///')
+  DEVELOP="$1"
+  if [ -z "$DEVELOP" ]; then
+    DEVELOP="develop"
+  fi
+  git checkout "$DEVELOP" && git pull && git push --delete origin $(git branch -a --merged | grep origin | grep -v 'master\|release-\|develop\|HEAD' | sed 's/remotes\/origin\///')
+}
+
+function gitAuthors {
+  git ls-tree -r -z --name-only HEAD -- $1 | xargs -0 -n1 git blame --line-porcelain HEAD |grep  "^author "|sort|uniq -c|sort -nr
 }
 
 function vimLinting {
@@ -157,6 +165,15 @@ function vimLinting {
 
 function today {
   vim ~/spenser.e.jones@gmail.com/orgmode/journal/$(date +%Y-%m-%d).org
+}
+
+function fixConflicts {
+  vim $(git status | grep 'both modified' | awk '{ print $3 }')
+}
+
+function fixPackageLock {
+  COMMON_COMMIT=$(git merge-base origin/develop HEAD)
+  git checkout $COMMON_COMMIT -- "$(git rev-parse --show-toplevel)/package-lock.json"
 }
 
 # Reload Colour scheme
