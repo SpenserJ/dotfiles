@@ -211,24 +211,3 @@ gaps inner 20
 gaps outer 0
 # smart_gaps on
 # smart_borders on
-
-# Add noop bars for polybar centering
-bar {
-  i3bar_command i3bar -t
-  position top
-  tray_output         none  # do not show tray output
-  workspace_buttons   no    # do not show workspace buttons
-  height              20    # same height as polybar
-
-  # prevent any accidental clicks/scrolls
-  bindsym button1 nop
-  bindsym button2 nop
-  bindsym button3 nop
-  bindsym button4 nop
-  bindsym button5 nop
-
-  colors {
-    # set bar background to transparent
-    background #00000000
-  }
-}
