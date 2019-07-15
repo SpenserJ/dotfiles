@@ -22,8 +22,9 @@ if [ "$OS" == "LinuxMint" ] || [ "$OS" == "Ubuntu" ]; then
 elif [ "$OS" == "ManjaroLinux" ]; then
   echo "Detected OS as Manjaro Linux"
 
-  sudo pacman -Syu --noconfirm base-devel yaourt neovim tmux zsh dunst libmpdclient wireless_tools jsoncpp i3-wm keepassxc chromium
-  yaourt -S --noconfirm polybar ttf-font-awesome-4 slack-desktop insync python-wal
+  sudo pacman -Syu --noconfirm base-devel neovim tmux zsh dunst libmpdclient wireless_tools jsoncpp i3-gaps keepassxc chromium rofi virt-manager libvirt qemu virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat xautolock
+
+  yaourt -Syu --noconfirm polybar ttf-font-awesome-4 slack-desktop insync python-pywal
 else
   echo "Could not detect OS"
   exit
@@ -49,6 +50,7 @@ if [[ $? -ne 0 ]]; then
   fi
 else
   UPDATED_DOTFILES=true
+  systemctl --user enable ssh-agent
 fi
 
 if [[ "$UPDATED_DOTFILES" == true ]]; then
