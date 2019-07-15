@@ -12,3 +12,5 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export EDITOR='neovim'
 export VISUAL='neovim'
 export PAGER='less'
+
+export PATH="$PATH:$HOME/.config/scripts"

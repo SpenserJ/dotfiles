@@ -185,7 +185,10 @@ exec --no-startup-id keepassxc
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id compton -b
 exec --no-startup-id xfce4-power-manager
-#exec --no-startup-id xautolock -time 10 -locker blurlock
+exec xautolock -detectsleep -time 1 -locker blurlock -corners +00- -cornerdelay 5\
+  -notify 10 -notifier "notify-send -u critical -t 9500 -- 'About to lock screen'"
+
+bindsym Mod4+l exec --no-startup-id $HOME/.config/scripts/lock.sh $HOME/.i3/lock.png
 
 # Set up Polybar
 exec_always --no-startup-id ~/.i3/polybar.sh &

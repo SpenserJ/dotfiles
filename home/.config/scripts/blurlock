@@ -1,0 +1,13 @@
+#!/bin/bash
+
+scrot /tmp/screen.png
+convert /tmp/screen.png -scale 10% -scale 1000% /tmp/screen.png
+convert /tmp/screen.png -blur 0x10 /tmp/screen.png
+
+if [[ -f /tmp/screen.png ]]; then
+  i3lock -i /tmp/screen.png
+else
+  echo "Error"
+fi
+
+rm /tmp/screen.png
