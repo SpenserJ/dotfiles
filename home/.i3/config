@@ -35,11 +35,11 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 #bindsym $mod+Ctrl+m exec pavucontrol
 
 # Bind the Multimedia Keys
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86AudioRaiseVolume exec volume-osd -c up
+bindsym XF86AudioLowerVolume exec volume-osd -c down
+bindsym XF86AudioMute exec volume-osd -c mute
 
-bindsym Print exec --no-startup-id i3-scrot -s
+bindsym --release Print exec --no-startup-id i3-scrot -s
 
 # change focus
 bindsym $mod+h focus left
