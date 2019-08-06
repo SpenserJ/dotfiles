@@ -39,7 +39,7 @@ bindsym XF86AudioRaiseVolume exec volume-osd -c up
 bindsym XF86AudioLowerVolume exec volume-osd -c down
 bindsym XF86AudioMute exec volume-osd -c mute
 
-bindsym --release Print exec --no-startup-id i3-scrot -s
+bindsym --release Print exec --no-startup-id maim -s ~/Pictures/$(date --iso-8601=seconds).png
 
 # change focus
 bindsym $mod+h focus left
