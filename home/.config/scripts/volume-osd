@@ -10,51 +10,51 @@ mixer="Master"
 
 while getopts "c:i:m:h" o
 do case "$o" in
-    c) command=$OPTARG;;
-    i) increment=$OPTARG;;
-    m) mixer=$OPTARG;;
-    h) echo -e "$usage"; exit 0;;
-    ?) echo -e "$usage"; exit 0;;
+  c) command=$OPTARG;;
+  i) increment=$OPTARG;;
+  m) mixer=$OPTARG;;
+  h) echo -e "$usage"; exit 0;;
+  ?) echo -e "$usage"; exit 0;;
 esac
 done
 
 display_volume=0
 icon_name=""
 if [ "$command" = "up" ]; then
-    display_volume=$(amixer set $mixer $increment+ unmute | grep -m 1 "%]" | cut -d "[" -f2|cut -d "%" -f1)
+  display_volume=$(amixer set $mixer $increment+ unmute | grep -m 1 "%]" | cut -d "[" -f2|cut -d "%" -f1)
 else
-	if [ "$command" = "down" ]; then
-	    display_volume=$(amixer set $mixer $increment- unmute | grep -m 1 "%]" | cut -d "[" -f2|cut -d "%" -f1)
-	else
-		if [ "$command" = "mute" ]; then
-		    if amixer get Master | grep "\[on\]"; then
-			display_volume=0
-			icon_name="notification-audio-volume-muted"
-			amixer set $mixer mute
-		    else
-			display_volume=$(amixer set $mixer unmute | grep -m 1 "%]" | cut -d "[" -f2|cut -d "%" -f1)
-		    fi
-		else
-		     echo -e $usage
-		     exit 1
-		fi
-	fi
+  if [ "$command" = "down" ]; then
+    display_volume=$(amixer set $mixer $increment- unmute | grep -m 1 "%]" | cut -d "[" -f2|cut -d "%" -f1)
+  else
+    if [ "$command" = "mute" ]; then
+      if amixer get Master | grep "\[on\]"; then
+        display_volume=0
+        icon_name="notification-audio-volume-muted"
+        amixer -D pulse set $mixer mute
+      else
+        display_volume=$(amixer -D pulse set $mixer unmute | grep -m 1 "%]" | cut -d "[" -f2|cut -d "%" -f1)
+      fi
+    else
+      echo -e $usage
+      exit 1
+    fi
+  fi
 fi
 
 if [ "$icon_name" = "" ]; then
-    if [ "$display_volume" = "0" ]; then
-        icon_name="notification-audio-volume-off"
+  if [ "$display_volume" = "0" ]; then
+    icon_name="notification-audio-volume-off"
+  else
+    if [ "$display_volume" -lt "33" ]; then
+      icon_name="notification-audio-volume-low"
     else
-        if [ "$display_volume" -lt "33" ]; then
-            icon_name="notification-audio-volume-low"
-        else
-            if [ "$display_volume" -lt "67" ]; then
-                icon_name="notification-audio-volume-medium"
-            else
-                icon_name="notification-audio-volume-high"
-            fi
-        fi
+      if [ "$display_volume" -lt "67" ]; then
+        icon_name="notification-audio-volume-medium"
+      else
+        icon_name="notification-audio-volume-high"
+      fi
     fi
+  fi
 fi
 
 notify-send "Volume" -i $icon_name -h int:value:$display_volume -h string:synchronous:volume

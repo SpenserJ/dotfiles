@@ -38,6 +38,9 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 bindsym XF86AudioRaiseVolume exec volume-osd -c up
 bindsym XF86AudioLowerVolume exec volume-osd -c down
 bindsym XF86AudioMute exec volume-osd -c mute
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 bindsym --release Print exec --no-startup-id maim -s ~/Pictures/$(date --iso-8601=seconds).png
 

@@ -84,7 +84,7 @@ font-2 = siji:pixelsize=10
 font-3 = "FontAwesome:size=10"
 font-4 = "Weather Icons:size=12;1"
 
-modules-left = i3
+modules-left = i3 music
 modules-center = xwindow
 modules-right = memory cpu eth battery date
 
@@ -278,5 +278,10 @@ type = internal/mpd
 host = 127.0.0.1
 port = 6600
 format-online = <label-song> <label-time>
+
+[module/music]
+type = custom/script
+interval = 1
+exec = ~/.config/scripts/polybar-music
 
 ; vim:ft=dosini
