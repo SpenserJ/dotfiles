@@ -24,7 +24,7 @@ elif [ "$OS" == "ManjaroLinux" ]; then
 
   sudo pacman -Syu --noconfirm base-devel neovim tmux zsh dunst libmpdclient wireless_tools jsoncpp i3-gaps keepassxc chromium rofi virt-manager libvirt qemu virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat xautolock
 
-  yaourt -Syu --noconfirm polybar ttf-font-awesome-4 slack-desktop insync python-pywal
+  yaourt -Syu --noconfirm polybar ttf-font-awesome-4 slack-desktop insync python-pywal autorandr-git
 else
   echo "Could not detect OS"
   exit

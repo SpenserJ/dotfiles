@@ -9,7 +9,8 @@
 
 [colors]
 background = ${xrdb:color0:#222}
-background-alt = ${xrdb:color1:#444}
+background-focused = ${xrdb:color1:#444}
+background-visible = ${xrdb:color2:#444}
 foreground = ${xrdb:color7:#dfdfdf}
 foreground-alt = ${xrdb:color7:#555}
 primary = ${xrdb:color1:#ffb52a}
@@ -55,6 +56,7 @@ modules-center = mpd
 modules-right = uptime powermenu
 
 [bar/primary]
+monitor = ${env:MONITOR:}
 width = 100%
 height = 20
 offset-x = 0
@@ -114,9 +116,10 @@ label-unmounted-foreground = ${colors.foreground-alt}
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
-index-sort = true
+index-sort = false
 wrapping-scroll = false
 enable-click = true
+pin-workspaces = true
 
 ws-icon-0 = Terminal;
 ws-icon-1 = Browser;
@@ -129,7 +132,7 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 label-focused = %icon% %name%
-label-focused-background = ${colors.background-alt}
+label-focused-background = ${colors.background-focused}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
@@ -140,8 +143,8 @@ label-urgent = %icon% %name%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-visible = %index%
-label-visible-background = ${self.label-focused-background}
+label-visible = %icon% %name%
+label-visible-background = ${colors.background-visible}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
