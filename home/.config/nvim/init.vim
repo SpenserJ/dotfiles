@@ -17,13 +17,11 @@ set nocompatible " No more vi compatibility
 
   " Load some bundles
     " Themes
-    Plug 'chriskempson/base16-vim'
+    Plug 'dracula/vim', { 'as': 'dracula' }
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
 
     " Linting
-    " Plug 'scrooloose/syntastic'
-    " Plug 'pmsorhaindo/syntastic-local-eslint.vim'
     Plug 'neomake/neomake'
     Plug 'benjie/neomake-local-eslint.vim'
 
@@ -52,4 +50,3 @@ source ~/.config/nvim/rc/colorscheme.vimrc
 source ~/.config/nvim/rc/editor.vimrc
 source ~/.config/nvim/rc/keys.vimrc
 source ~/.config/nvim/rc/languages.vimrc
-source ~/.config/nvim/rc/color_overrides.vimrc

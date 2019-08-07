@@ -7,12 +7,13 @@ fi
 
 sudo pacman -Syu --noconfirm \
   base-devel neovim tmux zsh wireless_tools jsoncpp keepassxc chromium \
-  i3-gaps dunst rofi xautolock playerctl \
-  virt-manager libvirt qemu virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat libmpdclient
+  i3-gaps dunst rofi xautolock playerctl xdotool scrot \
+  virt-manager libvirt qemu virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat
 
 yaourt -Syu --noconfirm \
-  slack-desktop insync autorandr-git maim gpmdp \
-  polybar ttf-font-awesome-4 python-pywal
+  slack-desktop insync autorandr-git maim gpmdp yay \
+  polybar nerd-fonts-noto-sans-mono nerd-fonts-noto-sans-regular-complete \
+  compton-tryone-git
 
 # Set ZSH as the primary shell
 chsh -s `which zsh`

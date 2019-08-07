@@ -36,12 +36,6 @@ alias ansible='noglob ansible'
 bindkey -v
 export KEYTIMEOUT=1
 
-NPM_PACKAGES="$HOME/.local/share/npm"
-NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-PATH="$NPM_PACKAGES/bin:$PATH"
-unset MANPATH
-MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-
 PATH="$HOME/.local/bin:$PATH"
 
 # ssh wrapper that rename current tmux window to the hostname of the
@@ -132,7 +126,7 @@ vimgrep () {
     return $?;
   fi
 
-  eval vim -c "/$1" $FILES;
+  eval vim $FILES;
 }
 
 function duf {
@@ -168,7 +162,10 @@ function today {
 }
 
 function fixConflicts {
-  vim $(git status | grep 'both modified' | awk '{ print $3 }')
+  FILES=$(git status | grep 'both modified' | awk '{print $3}')
+  eval git reset $FILES
+  eval vim $FILES
+  eval git add -p $FILES
 }
 
 function fixPackageLock {

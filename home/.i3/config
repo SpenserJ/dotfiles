@@ -57,18 +57,18 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-# bindsym $mod+Shift+percent split h
+bindsym $mod+Ctrl+percent split h
 
 # split in vertical orientation
-# bindsym $mod+Shift+quotedbl split v
+bindsym $mod+Ctrl+quotedbl split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
+# bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -88,6 +88,7 @@ set $workspace2 "Browser"
 set $workspace3 "Slack"
 set $workspace4 "KeePass"
 set $workspace5 "Misc"
+set $workspace10 "Music"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1; exec ~/.i3/workspace_terminal.sh
@@ -99,7 +100,7 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+0 workspace $workspace10; exec [ $(ps aux | grep gpmdp | wc -l) = 0 ] && gpmdp
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -111,7 +112,7 @@ bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # move workspace to another monitor
 bindsym $mod+m move workspace to output left
@@ -152,52 +153,45 @@ for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
+for_window [class="Yad" title="yad-calendar"] floating enable
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-  # These bindings trigger as soon as you enter the resize mode
-
-  # Pressing left will shrink the window’s width.
-  # Pressing right will grow the window’s width.
-  # Pressing up will shrink the window’s height.
-  # Pressing down will grow the window’s height.
-  bindsym j resize shrink width 10 px or 10 ppt
-  bindsym k resize grow height 10 px or 10 ppt
-  bindsym l resize shrink height 10 px or 10 ppt
-  bindsym semicolon resize grow width 10 px or 10 ppt
-
-  # same bindings, but for the arrow keys
-  bindsym Left resize shrink width 10 px or 10 ppt
-  bindsym Down resize grow height 10 px or 10 ppt
-  bindsym Up resize shrink height 10 px or 10 ppt
-  bindsym Right resize grow width 10 px or 10 ppt
+  bindsym h resize grow left 10 px or 10 ppt
+  bindsym j resize grow up 10 px or 10 ppt
+  bindsym k resize grow down 10 px or 10 ppt
+  bindsym l resize grow right 10 px or 10 ppt
+  bindsym $mod+h resize shrink right 10 px or 10 ppt
+  bindsym $mod+j resize shrink down 10 px or 10 ppt
+  bindsym $mod+k resize shrink up 10 px or 10 ppt
+  bindsym $mod+l resize shrink left 10 px or 10 ppt
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
   bindsym Escape mode "default"
+  bindsym q mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
 # Automatically start applications
-exec --no-startup-id ~/.i3/monitors
 exec --no-startup-id insync start
 exec --no-startup-id nm-applet
-exec --no-startup-id i3-sensible-terminal
-exec --no-startup-id chromium
-exec --no-startup-id slack
-# exec --no-startup-id keepass2
-exec --no-startup-id keepassxc
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id compton -b
 exec --no-startup-id xfce4-power-manager
-exec xautolock -detectsleep -time 1 -locker blurlock -corners +00- -cornerdelay 5\
-  -notify 10 -notifier "notify-send -u critical -t 9500 -- 'About to lock screen'"
+exec --no-startup-id xautolock -detectsleep -time 5 -locker blurlock\
+  -corners +00- -cornerdelay 5\
+  -notify 20 -notifier "notify-send -u critical -t 18000 -- 'About to lock screen'"
+exec --no-startup-id autorandr --change --force
 
-bindsym Mod4+l exec --no-startup-id $HOME/.config/scripts/lock.sh $HOME/.i3/lock.png
+bindsym Mod4+l exec --no-startup-id i3exit lock, mode "default"
 
 # Set up Polybar
-exec_always --no-startup-id ~/.i3/polybar.sh &
+exec_always --no-startup-id ~/.config/polybar/start.sh &
+
+# Set up wallpaper
+exec_always --no-startup-id feh --bg-scale ~/.themes/wallpaper/jarrett-kow-1ZOyYPOBn7I-unsplash.jpg
 
 # Open applications on specific workspaces
 assign [class="Gnome-terminal"] $workspace1
@@ -207,6 +201,7 @@ assign [class="Chromium"] $workspace2
 assign [class="Slack"] $workspace3
 assign [class="KeePass2"] $workspace4
 assign [class="keepassxc"] $workspace4
+assign [class="Google Play Music Desktop Player"] $workspace10
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -216,4 +211,4 @@ for_window [class="^.*"] border pixel 2
 gaps inner 20
 gaps outer 0
 # smart_gaps on
-# smart_borders on
+smart_borders on
