@@ -5,30 +5,14 @@ if [[ $EUID -eq 0 ]]; then
   exit
 fi
 
-OS=$(lsb_release -i | awk '{print $3}')
-if [ "$OS" == "LinuxMint" ] || [ "$OS" == "Ubuntu" ]; then
-  echo "Detected OS as Ubuntu or Mint"
+sudo pacman -Syu --noconfirm \
+  base-devel neovim tmux zsh wireless_tools jsoncpp keepassxc chromium \
+  i3-gaps dunst rofi xautolock playerctl \
+  virt-manager libvirt qemu virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat libmpdclient
 
-  # Install NeoVim
-  sudo add-apt-repository --yes --update ppa:neovim-ppa/stable
-  sudo apt-get update
-  sudo apt-get install -y neovim python-dev python-pip python3-dev python3-pip
-  sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
-  sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
-  sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
-
-  # Install standard dependencies
-  sudo apt-get install tmux zsh dunst polybar feh
-elif [ "$OS" == "ManjaroLinux" ]; then
-  echo "Detected OS as Manjaro Linux"
-
-  sudo pacman -Syu --noconfirm base-devel neovim tmux zsh dunst libmpdclient wireless_tools jsoncpp i3-gaps keepassxc chromium rofi virt-manager libvirt qemu virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat xautolock playerctl
-
-  yaourt -Syu --noconfirm polybar ttf-font-awesome-4 slack-desktop insync python-pywal autorandr-git maim gpmdp
-else
-  echo "Could not detect OS"
-  exit
-fi
+yaourt -Syu --noconfirm \
+  slack-desktop insync autorandr-git maim gpmdp \
+  polybar ttf-font-awesome-4 python-pywal
 
 # Set ZSH as the primary shell
 chsh -s `which zsh`
