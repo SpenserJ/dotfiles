@@ -1,13 +1,43 @@
 #!/bin/bash
 
-scrot /tmp/screen.png
-convert /tmp/screen.png -scale 10% -scale 1000% /tmp/screen.png
-convert /tmp/screen.png -blur 0x10 /tmp/screen.png
+declare -A COLORS=()
+while IFS=: read -r prop value; do
+  COLORS["${prop:2}"]="${value:1}"
+done < <(xrdb -q)
 
-if [[ -f /tmp/screen.png ]]; then
-  i3lock -i /tmp/screen.png
-else
-  echo "Error"
-fi
+keyhlcolor="${COLORS[color2]}FF"
+bshlcolor="${COLORS[color4]}FF"
+insidecolor="00000000"
+separatorcolor="00000000"
+insidevercolor="${COLORS[color7]}7E"
+insidewrongcolor="${COLORS[color1]}7E"
+ringcolor="${COLORS[foreground]}FF"
+ringvercolor="${COLORS[foreground]}FF"
+ringwrongcolor="${COLORS[foreground]}FF"
+timecolor="${COLORS[foreground]}FF"
+datecolor="${COLORS[foreground]}FF"
+greetercolor="${COLORS[foreground]}FF"
+font="sans-serif"
+indicatorX="w/2"
+indicatorY="h/2"
+indicatorRadius=245
+ringWidth=10
+textX="w/2"
+textY="h-16"
+timeFormat="%-I:%M %p"
+dateFormat="%A, %B %-d"
 
-rm /tmp/screen.png
+i3lock --blur 10 --ignore-empty-password --screen 0 --pass-media-keys --clock\
+  --indpos="$indicatorX:$indicatorY" \
+  --datepos="$textX:$textY" --datesize=16 --date-align 0 --datestr="$dateFormat" \
+  --timepos="$textX:$textY-16-8" --timesize=24 --time-align 0 --timestr="$timeFormat" \
+  --image ~/.config/scripts/blurlock.png \
+  --insidecolor=$insidecolor --ringcolor=$ringcolor --line-uses-inside \
+  --keyhlcolor=$keyhlcolor --bshlcolor=$bshlcolor --separatorcolor=$separatorcolor \
+  --insidevercolor=$insidevercolor --insidewrongcolor=$insidewrongcolor \
+  --ringvercolor=$ringvercolor --ringwrongcolor=$ringwrongcolor \
+  --radius=$indicatorRadius --ring-width=$ringWidth \
+  --veriftext='' --wrongtext='' --noinputtext='' \
+  --timecolor="$timecolor" --datecolor="$datecolor" \
+  --time-font="$font" --date-font="$font" --layout-font="$font" \
+  --force-clock --indicator

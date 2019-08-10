@@ -11,7 +11,7 @@ sudo pacman -Syu --noconfirm \
   virt-manager libvirt qemu virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat
 
 yaourt -Syu --noconfirm \
-  slack-desktop insync autorandr-git maim gpmdp yay \
+  slack-desktop insync autorandr-git maim gpmdp yay i3lock-color-git\
   polybar nerd-fonts-noto-sans-mono nerd-fonts-noto-sans-regular-complete \
   compton-tryone-git
 
