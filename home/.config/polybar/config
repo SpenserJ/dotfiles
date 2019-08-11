@@ -73,7 +73,7 @@ font-0 = "NotoSans Nerd Font:size=10;0"
 
 modules-left = i3
 modules-center = music
-modules-right = memory cpu network-wired network-wireless battery popup-calendar updates-arch-combined ping
+modules-right = memory cpu network-wired network-wireless battery popup-calendar updates-arch-combined ping videowall
 
 bottom = true
 
@@ -210,5 +210,14 @@ interval = 30
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.magenta}
+
+[module/videowall]
+type = custom/script
+exec = ~/.config/polybar/scripts/videowall.sh
+click-left = ~/.config/polybar/scripts/videowall.sh --toggle
+interval = 5
+format-prefix = "辶 "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = ${colors.white}
 
 ; vim:ft=dosini

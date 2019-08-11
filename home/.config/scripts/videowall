@@ -1,0 +1,48 @@
+#!/bin/bash
+
+shopt -s nullglob dotglob
+if [ -n "$1" ]; then
+  VIDEOS=("$@")
+else
+  VIDEOS=(/opt/ATV4/*)
+fi
+REMAINING_VIDEOS=()
+
+killVideos() {
+  for PID in $PIDS; do
+    kill -9 $PID
+  done
+}
+trap killVideos SIGINT SIGTERM SIGHUP EXIT
+
+while (true); do
+  # If we're out of remaining videos, reset to the full list
+  if [[ "${#REMAINING_VIDEOS[@]}" -eq 0 ]]; then
+    REMAINING_VIDEOS=("${VIDEOS[@]}")
+  fi
+
+  # Pick a random video from the list
+  RAND_INDEX=$((RANDOM%${#REMAINING_VIDEOS[@]}))
+  FILE="${REMAINING_VIDEOS[$RAND_INDEX]}"
+
+  # Remove the entry from the array and recreate the array to fix indexes
+  unset "REMAINING_VIDEOS[$RAND_INDEX]"
+  REMAINING_VIDEOS=("${REMAINING_VIDEOS[@]}")
+
+  SCREENS=$(xrandr -q | grep ' connected' | grep -oP '\d+x\d+\+\d+\+\d+')
+  PIDS=()
+
+  echo "Playing $FILE on $SCREENS"
+  for i in $SCREENS; do
+    nice xwinwrap -g "$i" -ov -fs -s -fdt -ni -nf -- \
+      mpv --wid WID --really-quiet --panscan="1.0" --autofit-larger=100%x100% "$FILE" &
+    PIDS+=($!)
+  done
+
+  # Wait for all videos to finish
+  for PID in $PIDS; do
+    wait $PID
+    EXIT_CODE=$?
+    [ $EXIT_CODE -gt 128 ] && { exit $EXIT_CODE; } ;
+  done
+done
