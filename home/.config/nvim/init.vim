@@ -23,14 +23,11 @@ set nocompatible " No more vi compatibility
 
     " Linting
     Plug 'neomake/neomake'
-    Plug 'benjie/neomake-local-eslint.vim'
+    Plug '~/src/local-npm-bin.vim'
 
     " Language Support
-    Plug 'tpope/vim-haml'
-    Plug 'lepture/vim-jinja'
-    Plug 'PotatoesMaster/i3-vim-syntax'
-    Plug 'pangloss/vim-javascript' | Plug 'mxw/vim-jsx'
-    Plug 'elzr/vim-json'
+    Plug 'sheerun/vim-polyglot'
+    Plug 'fatih/vim-go'
 
     " Editor Upgrades
     Plug 'tpope/vim-fugitive'
@@ -41,6 +38,7 @@ set nocompatible " No more vi compatibility
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'sjl/gundo.vim'
     Plug 'jceb/vim-orgmode'
+    Plug 'farseer90718/vim-taskwarrior'
 
   call plug#end()
 
