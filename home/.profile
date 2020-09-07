@@ -9,8 +9,8 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 # Editors
 #
 
-export EDITOR='neovim'
-export VISUAL='neovim'
+export EDITOR='vim'
+export VISUAL='vim'
 export PAGER='less'
 
 export PATH="$PATH:$HOME/.config/scripts"

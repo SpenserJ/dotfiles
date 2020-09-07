@@ -1,3 +1,6 @@
+autoload -Uz compinit
+compinit
+
 # Set up Base16-Shell
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
@@ -16,6 +19,9 @@ alias homesick=homeshick
 # Add Homeshick completions to ZSH
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 export DOTFILES="$HOME/.homesick/repos/dotfiles"
+
+# Add kubectl completions to ZSH
+source <(kubectl completion zsh)
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -133,20 +139,70 @@ function duf {
   du -sk "$@" | sort -n | while read size fname; do for unit in k M G T P E Z Y; do if [ $size -lt 1024 ]; then echo -e "${size}${unit}\t${fname}"; break; fi; size=$((size/1024)); done; done
 }
 
-function gitCleanLocalBranches {
-  DEVELOP="$1"
-  if [ -z "$DEVELOP" ]; then
-    DEVELOP="develop"
+function confirmInput {
+  QUERY=${1:-"Are you sure?"}
+  local compcontext='yn:yes or no:(yes no)'
+  vared -cp "$QUERY [y/N] " response
+  case "$response" in
+    [yY][eE][sS]|[yY]) 
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+function updateGit {
+  BASE=${1:-develop}
+  git checkout "$BASE" && git fetch -p && git pull
+  rc=$?; if [[ $rc != 0 ]]; then
+    echo "Pull failed. Aborting"
+    return $rc
   fi
-  git checkout "$DEVELOP" && git pull && git branch -d $(git branch --merged | grep -v 'master\|develop')
+}
+
+function gitCleanLocalBranches {
+  updateGit "$1"
+  rc=$?; if [[ $rc != 0 ]]; then; return $rc; fi
+  BRANCHES=$(\
+    git branch --merged | \
+    grep -v 'master\|release-\|develop\|HEAD' | \
+    grep '\/' \
+  )
+  if [ -z "$BRANCHES" ]; then
+    echo "No branches to delete"
+    return 0
+  fi
+  echo "About to delete the following local branches:"
+  echo $BRANCHES
+  confirmInput
+  if [ $? -eq 0 ]; then
+    git branch -d $(echo $BRANCHES)
+  fi
 }
 
 function gitCleanRemoteBranches {
-  DEVELOP="$1"
-  if [ -z "$DEVELOP" ]; then
-    DEVELOP="develop"
+  updateGit "$1"
+  rc=$?; if [[ $rc != 0 ]]; then; return $rc; fi
+
+  BRANCHES=$(\
+    git branch -a --merged | \
+    grep origin | \
+    grep -v 'master\|release-\|develop\|HEAD' | \
+    sed 's/remotes\/origin\///' | \
+    grep '\/' \
+  )
+  if [ -z "$BRANCHES" ]; then
+    echo "No branches to delete"
+    return 0
   fi
-  git checkout "$DEVELOP" && git pull && git push --delete origin $(git branch -a --merged | grep origin | grep -v 'master\|release-\|develop\|HEAD' | sed 's/remotes\/origin\///')
+  echo "About to delete the following remote branches:"
+  echo $BRANCHES
+  confirmInput
+  if [ $? -eq 0 ]; then
+    git push --delete origin $(echo $BRANCHES)
+  fi
 }
 
 function gitAuthors {
@@ -162,7 +218,7 @@ function today {
 }
 
 function fixConflicts {
-  FILES=$(git status | grep 'both modified' | awk '{print $3}')
+  FILES=$(git status | grep 'both modified' | awk '{print $3}' | tr '\n' ' ')
   eval git reset $FILES
   eval vim $FILES
   eval git add -p $FILES
@@ -173,5 +229,18 @@ function fixPackageLock {
   git checkout $COMMON_COMMIT -- "$(git rev-parse --show-toplevel)/package-lock.json"
 }
 
+function trustDockerNetworks {
+  NETWORKS=("${(@f)$(docker network ls | grep bridge | grep -v 'bridge \+bridge' | awk '{print $1}')}")
+  for NETWORK in ${NETWORKS[@]}; do
+    echo "Trusting br-$NETWORK"
+    sudo firewall-cmd --zone=trusted --add-interface="br-$NETWORK"
+    sudo firewall-cmd --zone=trusted --add-interface="br-$NETWORK" --permanent
+  done
+}
+
 # Reload Colour scheme
 # (cat ~/.cache/wal/sequences &)
+
+# GoLang
+export GOPATH=/home/spenser/go
+export PATH=$GOPATH/bin:$PATH
