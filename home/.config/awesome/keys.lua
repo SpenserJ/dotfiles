@@ -10,13 +10,20 @@ local menubar = require("menubar")
 local config = require("config")
 local mymainmenu = require("mainmenu")
 
-local keys = {}
-
 -- Mod keys
 local superkey = "Mod4"
 local altkey = "Mod1"
 local ctrlkey = "Control"
 local shiftkey = "Shift"
+
+local keys = {
+  mod = {
+    super = superkey,
+    alt = altkey,
+    ctrl = ctrlkey,
+    shift = shiftkey
+  }
+}
 
 keys.clientkeys = gears.table.join(
   -- Close client
@@ -86,7 +93,19 @@ keys.clientkeys = gears.table.join(
       c.maximized_horizontal = not c.maximized_horizontal
       c:raise()
     end,
-    { description = "(un)maximize horizontally", group = "client" })
+    { description = "(un)maximize horizontally", group = "client" }),
+
+  -- Screen brightness
+  awful.key(
+    {}, "XF86MonBrightnessUp",
+    function () awful.spawn("light -A 5") end,
+    { description = "increase brightness", group = "system" }
+  ),
+  awful.key(
+    {}, "XF86MonBrightnessDown",
+    function () awful.spawn("light -U 5") end,
+    { description = "decrease brightness", group = "system" }
+  )
 )
 
 keys.globalkeys = gears.table.join(

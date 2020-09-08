@@ -13,3 +13,6 @@
 [submodule "home/.themes/dracula/xresources"]
 	path = home/.themes/dracula/xresources
 	url = https://github.com/dracula/xresources.git
+[submodule "home/.config/awesome/3rd-party/widgets-streetturtle"]
+	path = home/.config/awesome/3rd-party/widgets-streetturtle
+	url = https://github.com/streetturtle/awesome-wm-widgets.git
