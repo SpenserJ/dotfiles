@@ -98,13 +98,25 @@ keys.clientkeys = gears.table.join(
   -- Screen brightness
   awful.key(
     {}, "XF86MonBrightnessUp",
-    function () awful.spawn("light -A 5") end,
-    { description = "increase brightness", group = "system" }
+    function () awful.spawn("light -A 5") end
   ),
   awful.key(
     {}, "XF86MonBrightnessDown",
-    function () awful.spawn("light -U 5") end,
-    { description = "decrease brightness", group = "system" }
+    function () awful.spawn("light -U 5") end
+  ),
+
+  -- Volume
+  awful.key(
+    {}, "XF86AudioMute",
+    function() awful.spawn("amixer -D pulse sset Master toggle") end
+  ),
+  awful.key(
+    {}, "XF86AudioLowerVolume",
+    function() awful.spawn("amixer -D pulse sset Master 5%-") end
+  ),
+  awful.key(
+    {}, "XF86AudioRaiseVolume",
+    function() awful.spawn("amixer -D pulse sset Master 5%+") end
   )
 )
 
@@ -176,6 +188,16 @@ keys.globalkeys = gears.table.join(
     { superkey }, "Return",
     function () awful.spawn(config.terminal) end,
     { description = "open a terminal", group = "launcher" }),
+
+  awful.key(
+    { }, "Print",
+    function () awful.util.spawn_with_shell("maim -s | xclip -selection clipboard -t image/png") end,
+    { description = "take screenshot", group = "system" }),
+
+  awful.key(
+    { superkey }, "l",
+    function () awful.util.spawn("xset s activate") end,
+    { description = "lock computer", group = "system" }),
 
   awful.key(
     { superkey, "Control" }, "r",

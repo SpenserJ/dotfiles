@@ -2,6 +2,11 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
+-- Fix the resolution of the second monitor
+if screen.count() == 2 then
+  screen[2]:fake_resize(screen[2].geometry.x, screen[2].geometry.y, 2560, 1440)
+end
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -19,10 +24,8 @@ require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
 local keys = require("keys")
-local set_wallpaper = require("wallpaper")
 local mymainmenu = require("mainmenu")
-local config = require("config")
-require("bar-top")
+require("config")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -55,7 +58,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init(awful.util.get_configuration_dir() .. "theme/theme.lua")
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -263,6 +266,8 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
+-- Things that should be loaded after configuration is ready
+require("bar-top")
 
 -- Start up applications
 require("autostart")
