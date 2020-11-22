@@ -1,0 +1,10 @@
+[Unit]
+Description=xss-lock
+
+[Service]
+Type=simple
+Environment=XSECURELOCK_SAVER=saver_xscreensaver
+ExecStart=xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
+
+[Install]
+WantedBy=default.target
