@@ -1,7 +1,7 @@
 [user]
   email = hello@spenserj.com
   name = Spenser Jones
-  signingkey = 477D8D46
+  signingkey = 7A17DA07164BCD4A
 [core]
   editor = nvim
   autocrlf = input
@@ -12,9 +12,13 @@
 [diff]
   renames = copies
 [alias]
-  tree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  tree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --no-show-signature
   vtag = tag --sort=version:refname
 [push]
   default = simple
 [commit]
-#  gpgsign = true
+  gpgsign = true
+[pull]
+	ff = only
+[log]
+  showSignature = true
