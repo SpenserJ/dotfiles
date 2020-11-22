@@ -1,0 +1,12 @@
+arzzen/calc.plugin.zsh
+djui/alias-tips
+mafredri/zsh-async
+MichaelAquilina/zsh-auto-notify
+Tarrasch/zsh-bd
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+
+# These need to be at the end
+sindresorhus/pure
+zdharma/fast-syntax-highlighting
+zsh-users/zsh-history-substring-search

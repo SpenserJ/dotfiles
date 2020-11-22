@@ -1,3 +1,4 @@
+export ZDOTDIR="$HOME/.config/zsh"
 #
 # Defines environment variables.
 #
@@ -55,7 +56,9 @@ if [[ -d "$TMPDIR" ]]; then
   fi
 fi
 
-# Source NVM if it is installed in profile.d
-if [ -e /etc/profile.d/nvm.sh ]; then
-  source /etc/profile.d/nvm.sh
-fi
+# Set up SSH Agent socket
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+export EDITOR='vim'
+export VISUAL='vim'
+export PAGER='less'
