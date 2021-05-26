@@ -1,3 +1,6 @@
+zstyle ':znap:*' repos-dir ~/.config/zsh/znap
+source ~/.config/zsh/znap/zsh-snap/znap.zsh
+
 # uncomment this and the last line for zprof info
 # zmodload zsh/zprof
 
@@ -12,13 +15,13 @@ for file in ${(M)config_files:#*/path.zsh}; do
   source "$file"
 done
 
-# Load the antibody plugins
+# Load the znap plugins
 for file in ${(M)config_files:#*/plugins.zsh}; do
   source "$file"
 done
 
 # Load everything except the plugins, path, and completion files
-for file in ${config_files:#*/(plugins|path|completion).zsh}; do
+for file in ${config_files:#*/(plugins|znap/**/*|path|completion).zsh}; do
   source "$file"
 done
 
