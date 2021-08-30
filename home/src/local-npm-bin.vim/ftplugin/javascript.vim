@@ -1,5 +1,14 @@
 runtime plugin/neomake-local-eslint.vim
 let b:neomake_javascript_eslint_exe = GetNpmBin('eslint')
+let g:neomake_javascript_yarn_eslint_maker = {
+    \ 'exe': '/home/spenser/.nvm/versions/node/v12.18.3/bin/yarn',
+    \ 'args': ['run', 'eslint', '--format=compact'],
+    \ 'cwd': '%:p:h',
+    \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,%W%f: line %l\, col %c\, Warning - %m,%-G,%-G%*\d problems%#'
+    \ }
+let g:neomake_javascript_enabled_makers = ['yarn_eslint']
+" let g:neomake_javascript_enabled_makers = ['eslint']
+
 " vim-flow doesn't us a buffer-specific config
 let g:flow#flowpath = GetNpmBin('flow')
 

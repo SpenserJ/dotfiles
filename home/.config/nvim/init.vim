@@ -22,23 +22,19 @@ set nocompatible " No more vi compatibility
     Plug 'vim-airline/vim-airline-themes'
 
     " Linting
-    Plug 'neomake/neomake'
-    Plug '~/src/local-npm-bin.vim'
+    Plug 'dense-analysis/ale'
 
     " Language Support
     Plug 'sheerun/vim-polyglot'
-    Plug 'fatih/vim-go'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
     " Editor Upgrades
-    Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
     Plug 'raimondi/delimitmate'
     Plug 'tpope/vim-surround'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'nathanaelkane/vim-indent-guides'
-    Plug 'sjl/gundo.vim'
-    Plug 'jceb/vim-orgmode'
-    Plug 'farseer90718/vim-taskwarrior'
+    Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
   call plug#end()
 

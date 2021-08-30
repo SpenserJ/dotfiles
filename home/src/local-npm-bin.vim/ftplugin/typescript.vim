@@ -1,6 +1,16 @@
 runtime plugin/neomake-local-eslint.vim
 " Neoformat typescript exes
 
+let b:neomake_typescript_eslint_exe = GetNpmBin('eslint')
+
+let g:neomake_typescript_yarn_eslint_maker = {
+    \ 'exe': '/home/spenser/.nvm/versions/node/v12.18.3/bin/yarn',
+    \ 'args': ['run', 'eslint', '--format=compact'],
+    \ 'cwd': '%:p:h',
+    \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,%W%f: line %l\, col %c\, Warning - %m,%-G,%-G%*\d problems%#'
+    \ }
+let g:neomake_typescript_enabled_makers = ['yarn_eslint']
+
 if exists('g:neoformat_enabled_typescript') && index(g:neoformat_enabled_typescript, 'tsfmt') >= 0
   if ! exists('b:neoformat_typescript_tsfmt')
     if exists('g:neoformat_typescript_tsfmt')

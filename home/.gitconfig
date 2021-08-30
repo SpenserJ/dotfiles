@@ -6,14 +6,66 @@
   editor = nvim
   autocrlf = input
   fileMode = false
+	excludesfile = /home/spenser/.gitignore_global
 [color]
   ui = auto
   interactive = auto
 [diff]
   renames = copies
 [alias]
+  # Display a tree view for the commits in your current branch, or all if you specify --all
   tree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --no-show-signature
+  # Sort all of the tags by their version number, instead of alphabetically
   vtag = tag --sort=version:refname
+  # Get the branch name for a GitLab PR
+  get-pr-branch = "!sh -c 'git fetch -u origin \"merge-requests/$0/head\" > /dev/null 2>&1 && git branch -r --contains FETCH_HEAD | sed -n 1p'"
+  # Check out the branch from origin for a GitLab PR
+  checkout-pr = "!sh -c 'git checkout $(git get-pr-branch \"$0\")'"
+  # Check out a local copy of the branch for a GitLab PR
+  checkout-pr-local = "!sh -c 'git checkout $(git get-pr-branch \"$0\" | sed -r \"s|origin/||\")'"
+  # Find the matching GitLab PR for your current branch, and open it
+  open-branch-pr = "!f() { \
+    git fetch origin refs/merge-requests/*/head:refs/remotes/origin/merge-requests/* > /dev/null 2>&1; \
+    clean_ref () { grep -oP 'merge-requests/\\d+' | head -n1 | sed -r 's|-|_|'; }; \
+    get_pr () { \
+      local EXACT=$(git for-each-ref --points-at $1~${2:-0} 2>/dev/null | clean_ref); \
+      if [ ! -z \"$EXACT\" ]; then echo \"$EXACT\"; return 0; fi; \
+      git for-each-ref --contains $1~${2:-0} 2>/dev/null | clean_ref; \
+    }; \
+    walk_back () { \
+      local TARGET=\"${1:-HEAD}\"; \
+      local DISTANCE=${2:-0}; \
+      local FIRST_PR=$(get_pr $TARGET $DISTANCE); \
+      if [ ! -z \"$FIRST_PR\" ]; then echo $FIRST_PR; return 0; fi; \
+      if [ \"$DISTANCE\" -lt 4 ]; then walk_back \"$TARGET\" $(($DISTANCE + 1)); return $?; fi; \
+      return 1; \
+    };\
+    UPSTREAM=\"$(git status -sb | grep -oE '\\.\\.\\..[^ ]*' | sed 's/...//')\"; \
+    if [ ! -z \"$UPSTREAM\" ]; then FIRST_PR=$(get_pr \"$UPSTREAM\"); fi; \
+    if [ -z \"$FIRST_PR\" ]; then FIRST_PR=$(walk_back); fi; \
+    git for-each-ref 'refs/remotes/origin/merge-requests/*' | awk '{print \"delete \"$3}' | git update-ref --stdin; \
+    if [ -z \"$FIRST_PR\" ]; then echo \"No PR found for this branch\"; return 1; fi; \
+    BASE=$(git config --get remote.origin.url | sed -rn 's|.+@(.+):(.+).git|\\1/\\2|p'); \
+    URL=https://${BASE}/-/${FIRST_PR}; \
+    echo \"Opening PR at $URL\"; \
+    xdg-open $URL; \
+  }; f"
+  # Delete your local copy of a branch and check out a fresh copy from origin
+  # `git checkout-fresh my/branch`
+  checkout-fresh = "!sh -c '\
+    git checkout --detach && \
+    git fetch origin \"$0\" && \
+    git show-ref --heads \"$0\" && git branch -D \"$0\" || true && \
+    git checkout \"$0\" \
+  '"
+  # Delete your local copy of a branch, check out the branch from the first arg, and rebase it onto the second arg
+  # `git checkout-rebase renovate/major-react develop` - Checkout `renovate/major-react` and rebase it onto the latest version of `develop`
+  # The second argument is defaulted, so you can run `git checkout-rebase renovate/major-react` to do the same as the above command
+  checkout-rebase = "!sh -c '\
+    git checkout-fresh \"$0\" && \
+    git fetch origin \"${1:-develop}\" && \
+    git rebase \"origin/${1:-develop}\" \
+  '"
 [push]
   default = simple
 [commit]
@@ -22,3 +74,8 @@
 	ff = only
 [log]
   showSignature = true
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

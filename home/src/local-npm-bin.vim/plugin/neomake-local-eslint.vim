@@ -34,7 +34,8 @@ function! GetNpmBin(binname)
   endif
 
   if empty(binpath)
-    let binpath = system('echo -n $(yarn bin ' . a:binname . ')')
+    " let binpath = system('echo -n $(yarn bin ' . a:binname . ')')
+    let binpath = "yarn run eslint"
     if ! filereadable(binpath)
       let binpath = ''
     end
