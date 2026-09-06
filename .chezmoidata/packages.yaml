@@ -1,0 +1,15 @@
+packages:
+  darwin:
+    brews:
+    - 'dive'
+    - 'fish'
+    - 'fzf'
+    - 'gh'
+    - 'git'
+    - 'neovim'
+    - 'starship'
+    casks:
+    - 'ghostty'
+    - 'google-chrome'
+    - 'scroll-reverser'
+    - 'tpack'
