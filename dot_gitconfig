@@ -1,0 +1,8 @@
+[user]
+  email = hello@spenserj.com
+  name = Spenser Jones
+[alias]
+  # Display a tree view for the commits in your current branch, or all if you specify --all
+  tree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --no-show-signature
+  # Sort all of the tags by their version number, instead of alphabetically
+  vtag = tag --sort=version:refname

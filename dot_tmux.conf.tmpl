@@ -7,9 +7,11 @@ set -g @catppuccin_flavor 'mocha'
 set -g default-terminal "tmux-256color"
 set -ga terminal-overrides ",*256col*:Tc"
 
+{{ if eq .osid "darwin" -}}
 # Use Fish as the shell by default
 set -g default-command /opt/homebrew/bin/fish
 set -g default-shell /opt/homebrew/bin/fish
+{{- end -}}
 
 # remap prefix to Control + a
 set -g prefix C-a

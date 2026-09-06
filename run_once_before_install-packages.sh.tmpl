@@ -1,6 +1,8 @@
-{{ if eq .chezmoi.os "darwin" -}}
+{{- if eq .osid "linux-arch" -}}
 #!/bin/bash
-
+yay -S {{ .packages.linux.arch | quoteList | join " " }}
+{{ else if eq .osid "darwin" -}}
+#!/bin/bash
 brew bundle --file=/dev/stdin <<EOF
 {{ range .packages.darwin.brews -}}
 brew {{ . | quote }}

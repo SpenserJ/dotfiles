@@ -1,4 +1,6 @@
+{{ if eq .osid "darwin" -}}
 eval "$(/opt/homebrew/bin/brew shellenv)"
+{{- end -}}
 
 # Created by `pipx` on 2026-01-27 19:08:01
 set PATH $PATH /Users/spenser.jones/.local/bin

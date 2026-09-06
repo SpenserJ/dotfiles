@@ -1,4 +1,14 @@
 packages:
+  linux:
+    arch:
+    - 'dive'
+    - 'fish'
+    - 'fzf'
+    - 'gh'
+    - 'git'
+    - 'neovim'
+    - 'starship'
+    - 'tpack'
   darwin:
     brews:
     - 'dive'
