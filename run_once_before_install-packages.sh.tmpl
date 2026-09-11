@@ -1,6 +1,6 @@
 {{- if eq .osid "linux-arch" -}}
 #!/bin/bash
-yay -S {{ .packages.linux.arch | quoteList | join " " }}
+yay -S --needed {{ .packages.linux.arch | quoteList | join " " }}
 {{ else if eq .osid "darwin" -}}
 #!/bin/bash
 brew bundle --file=/dev/stdin <<EOF

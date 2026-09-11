@@ -4,11 +4,31 @@ packages:
     - 'dive'
     - 'fish'
     - 'fzf'
-    - 'gh'
+    - 'tree-sitter-cli'
+    - 'github-cli'
     - 'git'
     - 'neovim'
     - 'starship'
     - 'tpack'
+    - 'docker'
+    - 'docker-compose'
+    - 'docker-buildx'
+    # Apps
+    - 'ghostty'
+    - 'syncthing'
+    - 'deskflow'
+    # Hyprland
+    - 'wl-clipboard'
+    - 'xdg-desktop-portal-hyprland'
+    - 'hyprpolkitagent'
+    - 'hypridle'
+    - 'hyprlock'
+    - 'hyprshot' # Taking screenshots
+    - 'swappy' # Annotating screenshots
+    - 'quickshell'
+    # Pipewire
+    - 'easyeffects' # Audio Processing
+    - 'lsp-plugins-lv2' # Equalizer for EasyEffects
   darwin:
     brews:
     - 'dive'
